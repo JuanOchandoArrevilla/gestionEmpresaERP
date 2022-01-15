@@ -21,6 +21,16 @@ const Navbar = () => {
               </NavLink>
             </h6>
           </li>
+
+          <li className="nav-item">
+            <h6 className="nav-link" >
+              <NavLink className="navbar-brand " to="/viviendas"  >
+                Mantenimiento y limpiesa
+              </NavLink>
+            </h6>
+          </li>
+
+
           <li className="nav-item">
             <h6 className="nav-link" >
               <NavLink className="navbar-brand" to="/stadistica">
