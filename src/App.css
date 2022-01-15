@@ -18,3 +18,18 @@
   color: green;
   font-weight: bold;
 }
+
+.formReserva {
+  position: relative;
+  left: 25px;
+}
+
+.listaVienda {
+  position: relative;
+  left:75%;
+  bottom:830px;
+}
+
+.paginaTamanoVivienda {
+  width: 100%;
+}

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Viendas from "./pages/Viviendas";
-import Reserva from "./pages/Reserva";
+import PaginaViviendas from './pages/PaginaViviendas'
+import PaginaReserva from './pages/PaginaReserva';
 
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/viviendas" element={<Viendas />} />
-          <Route path="/reserva" element={<Reserva />} />
+          <Route path="/viviendas" element={<PaginaViviendas />} />
+          <Route path="/reserva" element={<PaginaReserva />} />
         </Routes>
       </BrowserRouter>
     </>
