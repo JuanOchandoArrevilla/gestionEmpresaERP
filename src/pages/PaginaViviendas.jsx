@@ -1,5 +1,5 @@
 import React from 'react'
-import Viviendas from '../components/Viviendas'
+import Viviendas from '../components/FormViviendas'
 
 const PaginaViviendas = () => {
     return (

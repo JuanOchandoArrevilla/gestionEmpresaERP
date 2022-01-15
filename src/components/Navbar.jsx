@@ -4,43 +4,67 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item"></li>
-          <li className="nav-item">
-            <h6 className="nav-link" >
-              <NavLink className="navbar-brand " to="/viviendas"  >
+      <div className="container-fluid">
+      <NavLink className="navbar-brand " to="/viviendas"  >
                 Viviendas
               </NavLink>
-            </h6>
-          </li>
-          <li className="nav-item">
-            <h6 className="nav-link" >
-              <NavLink className="navbar-brand" to="/reserva">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+          
+            <li className="nav-item dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Reserva
               </NavLink>
-            </h6>
-          </li>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/reserva">
+                    Crear Reserva
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="">
+                    Lista de reserva
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="#">
+                    Something else here
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
 
-          <li className="nav-item">
-            <h6 className="nav-link" >
-              <NavLink className="navbar-brand " to="/viviendas"  >
-                Mantenimiento y limpiesa
+            <li className="nav-item">
+              <NavLink className="nav-link active" aria-current="page" to="#">
+                Mantenimiento y limpieza
               </NavLink>
-            </h6>
-          </li>
+            </li>
 
-
-          <li className="nav-item">
-            <h6 className="nav-link" >
-              <NavLink className="navbar-brand" to="/stadistica">
-                Stadistica
+            <li className="nav-item">
+              <NavLink className="nav-link" to="#">
+                Estadistica
               </NavLink>
-            </h6>
-          </li>
-        </ul>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="#">
+                Pricing
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+    
   );
 };
 

@@ -19,17 +19,16 @@
   font-weight: bold;
 }
 
-.formReserva {
-  position: relative;
-  left: 25px;
+.formPosicion {
+  position: absolute;
+  left: 100px;
+  top: 75px;
+  width: 75%;
 }
 
 .listaVienda {
-  position: relative;
+  position: absolute;
   left:75%;
-  bottom:830px;
+  top:75px;
 }
 
-.paginaTamanoVivienda {
-  width: 100%;
-}

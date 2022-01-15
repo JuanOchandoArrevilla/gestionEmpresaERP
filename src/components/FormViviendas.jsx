@@ -5,9 +5,9 @@ const Viendas = () => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
 
   return (
-    <div className="container">
+    <div className="formPosicion">
       <h1>Crear Viviendas</h1>
-      <div className="col-6">
+      <div className="col-2">
         <div className="card mt-3 bg-dark">
           <div className="card-body ">
             <Formik
