@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const Viendas = () => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
-
+        
   return (
     <div className="formPosicion">
       <h1>Crear Viviendas</h1>
@@ -12,61 +12,63 @@ const Viendas = () => {
           <div className="card-body ">
             <Formik
               initialValues={{
-                propiedad: "",
-                dirrecion: "",
-                localidad: "",
-                habitacion: "",
-                personas: "",
-                baños: "",
-                tamaño: "",
-                precio: "",
-                disponible: "",
+                Num_propiedad: "",
+                Provincia:"",
+                Dirrecion: "",
+                Localidad: "",
+                Num_Habitacion: "",
+                Num_Personas: "",
+                Baños: "",
+                Tamaño_MTS: "",
+                Precio_Noche: "",
               }}
               validate={(valores) => {
                 let errores = {};
 
-                if (!valores.propiedad) {
-                  errores.propiedad = "por favor ingrese un valor";
+                if (!valores.Num_propiedad) {
+                  errores.Num_propiedad = "por favor ingrese un valor";
                 }
 
-                if (!valores.dirrecion) {
-                  errores.dirrecion = "por favor ingrese una dirrecion";
+                if (!valores.Provincia) {
+                  errores.Provincia = "por favor ingrese un valor";
                 }
 
-                if (!valores.localidad) {
-                  errores.localidad = "por favor ingrese una localidad";
-                }
-                if (!valores.habitacion) {
-                  errores.habitacion =
-                    "por favor ingrese numeros de habitaciones";
+                if (!valores.Dirrecion) {
+                  errores.Dirrecion = "por favor ingrese una Dirrecion";
                 }
 
-                if (!valores.personas) {
-                  errores.personas = "por favor ingrese numeros de personas";
+                if (!valores.Localidad) {
+                  errores.Localidad = "por favor ingrese una Localidad";
                 }
-                if (!valores.baños) {
-                  errores.baños =
-                    "por favor ingrese la cantida de baños de la vivienda";
-                }
-
-                if (!valores.tamaño) {
-                  errores.tamaño = "por favor ingrese el tamaño de la vivienda";
+                if (!valores.Num_Habitacion) {
+                  errores.Num_Habitacion =
+                    "por favor ingrese numeros de Num_Habitaciones";
                 }
 
-                if (!valores.precio) {
-                  errores.precio =
-                    "por favor ingrese el precio de la vivienda por noche";
+                if (!valores.Num_Personas) {
+                  errores.Num_Personas = "por favor ingrese numeros de Num_Personas";
+                }
+                if (!valores.Baños) {
+                  errores.Baños =
+                    "por favor ingrese la cantida de Baños de la vivienda";
                 }
 
-                if (!valores.disponible) {
-                  errores.disponible = "por favor seleccione una opcion";
+                if (!valores.Tamaño_MTS) {
+                  errores.Tamaño_MTS = "por favor ingrese el Tamaño_MTS de la vivienda";
                 }
+
+                if (!valores.Precio_Noche) {
+                  errores.Precio_Noche =
+                    "por favor ingrese el Precio_Noche de la vivienda por noche";
+                }
+
 
                 return errores;
               }}
               onSubmit={(valores, { resetForm }) => {
                 resetForm();
-                console.log(valores);
+            
+                console.log(JSON.stringify(valores));
                 console.log("Formulario enviado");
 
                 setEnviarFormulario(true);
@@ -78,20 +80,43 @@ const Viendas = () => {
                 <Form className="">
                   <div className="mb-3">
                     <label className="form-label colorLetras">
-                      Nº Propiedad
+                      Nº Propiedad:
                     </label>
                     <Field
                       type="number"
                       className="form-control"
-                      id="propiedad"
-                      name="propiedad"
+                      id="Num_propiedad"
+                      name="Num_propiedad"
+                      placeholder="ejem 12212"
                     />
                     <ErrorMessage
-                      name="propiedad"
+                      name="Num_propiedad"
                       component={() => (
                         <div className="colorLetrasErroes">
                           {" "}
-                          {errors.propiedad}{" "}
+                          {errors.Num_propiedad}{" "}
+                        </div>
+                      )}
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label colorLetras">
+                     Provincia
+                    </label>
+                    <Field
+                      type="text"
+                      className="form-control"
+                      id="Provincia"
+                      name="Provincia"
+                      placeholder="Santa cruz"
+                    />
+                    <ErrorMessage
+                      name="Provincia"
+                      component={() => (
+                        <div className="colorLetrasErroes">
+                          {" "}
+                          {errors.Provincia}{" "}
                         </div>
                       )}
                     />
@@ -102,15 +127,16 @@ const Viendas = () => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="dirrecion"
-                      name="dirrecion"
+                      id="Dirrecion"
+                      name="Dirrecion"
+                      placeholder="Calle rosa de caleya"
                     />
                     <ErrorMessage
-                      name="dirrecion"
+                      name="Dirrecion"
                       component={() => (
                         <div className="colorLetrasErroes">
                           {" "}
-                          {errors.dirrecion}{" "}
+                          {errors.Dirrecion}{" "}
                         </div>
                       )}
                     />
@@ -121,14 +147,15 @@ const Viendas = () => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="localidad"
-                      name="localidad"
+                      id="Localidad"
+                      name="Localidad"
+                      placeholder="taco"
                     />
                     <ErrorMessage
-                      name="localidad"
+                      name="Localidad"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.localidad}
+                          {errors.Localidad}
                         </div>
                       )}
                     />
@@ -136,19 +163,20 @@ const Viendas = () => {
 
                   <div className="mb-3">
                     <label className="form-label colorLetras">
-                      Nº Habitaciòn
+                      Nº Habitación:
                     </label>
                     <Field
                       type="number"
                       className="form-control"
-                      id="habitacion"
-                      name="habitacion"
+                      id="Num_Habitacion"
+                      name="Num_Habitacion"
+                      placeholder="Num_Habitaciones Disponibilidads"
                     />
                     <ErrorMessage
-                      name="habitacion"
+                      name="Num_Habitacion"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.habitacion}
+                          {errors.Num_Habitacion}
                         </div>
                       )}
                     />
@@ -156,19 +184,20 @@ const Viendas = () => {
 
                   <div className="mb-3">
                     <label className="form-label colorLetras">
-                      Nº Personas
+                      Nº Num_Personas:
                     </label>
                     <Field
                       type="number"
                       className="form-control"
-                      id="personas"
-                      name="personas"
+                      id="Num_Personas"
+                      name="Num_Personas"
+                      placeholder="numeros de Num_Personas"
                     />
                     <ErrorMessage
-                      name="personas"
+                      name="Num_Personas"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.personas}
+                          {errors.Num_Personas}
                         </div>
                       )}
                     />
@@ -179,13 +208,14 @@ const Viendas = () => {
                     <Field
                       type="number"
                       className="form-control"
-                      id="baños"
-                      name="baños"
+                      id="Baños"
+                      name="Baños"
+                      placeholder="cantidad de Baños"
                     />
                     <ErrorMessage
-                      name="baños"
+                      name="Baños"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.baños}</div>
+                        <div className="colorLetrasErroes">{errors.Baños}</div>
                       )}
                     />
                   </div>
@@ -197,13 +227,14 @@ const Viendas = () => {
                     <Field
                       type="number"
                       className="form-control"
-                      id="tamaño"
-                      name="tamaño"
+                      id="Tamaño_MTS"
+                      name="Tamaño_MTS"
+                      placeholder="MTS cuadros de la vivienda"
                     />
                     <ErrorMessage
-                      name="tamaño"
+                      name="Tamaño_MTS"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.tamaño}</div>
+                        <div className="colorLetrasErroes">{errors.Tamaño_MTS}</div>
                       )}
                     />
                   </div>
@@ -216,36 +247,18 @@ const Viendas = () => {
                       type="number"
                       step="0.01"
                       className="form-control"
-                      id="precio"
-                      name="precio"
+                      id="Precio_Noche"
+                      name="Precio_Noche"
+                      placeholder="Precio_Noche por noche"
                     />
                     <ErrorMessage
-                      name="precio"
+                      name="Precio_Noche"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.precio}</div>
+                        <div className="colorLetrasErroes">{errors.Precio_Noche}</div>
                       )}
                     />
                   </div>
-                  <div className="mb-3">
-                    <label className="form-label colorLetras">
-                      Disponibilidad
-                    </label>
-                    <br></br>
-                    <Field name="disponible" as="select">
-                      <option value=" "></option>
-                      <option value="disponible">disponible</option>
-                      <option value="no disponible">no disponible</option>
-                    </Field>
-                    <ErrorMessage
-                      name="disponible"
-                      component={() => (
-                        <div className="colorLetrasErroes">
-                          {" "}
-                          {errors.disponible}{" "}
-                        </div>
-                      )}
-                    />
-                  </div>
+                  
 
                   <button className="btn btn-primary" type="submit">
                     Guardar Vivienda

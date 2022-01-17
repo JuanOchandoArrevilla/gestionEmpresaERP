@@ -1,12 +1,14 @@
-import React from 'react'
-import Viviendas from '../components/FormViviendas'
+import React  from 'react'
+import FormViviendas from '../components/FormViviendas'
+
+
 
 const PaginaViviendas = () => {
+
     return (
-        <>
+        <>     
+        <FormViviendas /> 
         
-        <Viviendas /> 
-         
         </>
     )
 }

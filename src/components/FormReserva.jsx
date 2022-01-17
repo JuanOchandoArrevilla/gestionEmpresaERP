@@ -14,52 +14,53 @@ const Reserva = () => {
           <div className="card-body ">
             <Formik
               initialValues={{
-                dni: "",
-                nombre: "",
-                fecha_Entrada: "",
-                fecha_Salida: "",
-                telefono: "",
-                email: "",
-                precio: "",
-                vivienda: "",
+                Num_Reservacion: "",
+                Nombre: "",
+                Fecha_Entrada: "",
+                Fecha_Salida: "",
+                Telefono: "",
+                Email: "",
+                Precio_Total: "",
+                Num_Propiedad_Vivienda: "",
               }}
               validate={(valores) => {
                 let errores = {};
 
-                if (!valores.dni) {
-                  errores.dni = "por favor ingrese un valor";
+                if (!valores.Num_Reservacion) {
+                  errores.Num_Reservacion = "por favor ingrese un valor";
                 }
 
-                if (!valores.nombre) {
-                  errores.nombre = "por favor ingrese un valor";
+                if (!valores.Nombre) {
+                  errores.Nombre = "por favor ingrese un valor";
                 }
 
-                if (!valores.telefono) {
-                  errores.telefono = "por favor ingrese un valor";
+                if (!valores.Telefono) {
+                  errores.Telefono = "por favor ingrese un valor";
                 }
-                if (!valores.email) {
-                  errores.email = "por favor ingrese valor";
+                if (!valores.Email) {
+                  errores.Email = "por favor ingrese valor";
                 } else if (
                   !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                    valores.email
+                    valores.Email
                   )
                 ) {
-                  errores.email = "el correo esta malo";
+                  errores.Email = "el correo esta malo";
                 }
 
-                if (!valores.precio) {
-                  errores.precio = "por favor ingrese el precio a pagar";
+                if (!valores.Precio_Total) {
+                  errores.Precio_Total = "por favor ingrese el Precio_Total a pagar";
                 }
 
-                if (!valores.vivienda) {
-                  errores.vivienda = "por favor ingrese un valor";
+                if (!valores.Num_Propiedad_Vivienda) {
+                  errores.Num_Propiedad_Vivienda = "por favor ingrese un valor";
                 }
 
                 return errores;
               }}
               onSubmit={(valores, { resetForm }) => {
+                
                 resetForm();
-                console.log(valores);
+                console.log(JSON.stringify(valores));
                 console.log("Formulario enviado");
 
                 // setEnviarFormulario(true);
@@ -69,17 +70,18 @@ const Reserva = () => {
               {({ errors }) => (
                 <Form className="">
                   <div className="mb-3">
-                    <label className="form-label colorLetras">DNI</label>
+                    <label className="form-label colorLetras">Nº Reservación</label>
                     <Field
                       type="text"
                       className="form-control"
-                      id="dni"
-                      name="dni"
+                      id="Num_Reservacion"
+                      name="Num_Reservacion"
+                      placeholder="ejemplo 22112"
                     />
                     <ErrorMessage
-                      name="dni"
+                      name="Num_Reservacion"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.dni}</div>
+                        <div className="colorLetrasErroes">{errors.Num_Reservacion}</div>
                       )}
                     />
                   </div>
@@ -89,13 +91,14 @@ const Reserva = () => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="nombre"
-                      name="nombre"
+                      id="Nombre"
+                      name="Nombre"
+                      placeholder="jonh doe"
                     />
                     <ErrorMessage
-                      name="nombre"
+                      name="Nombre"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.nombre}</div>
+                        <div className="colorLetrasErroes">{errors.Nombre}</div>
                       )}
                     />
                   </div>
@@ -107,8 +110,8 @@ const Reserva = () => {
                     <Field
                       type="date"
                       className="form-control"
-                      id="fecha_Entrada"
-                      name="fecha_Entrada"
+                      id="Fecha_Entrada"
+                      name="Fecha_Entrada"
                     />
                   </div>
 
@@ -119,8 +122,8 @@ const Reserva = () => {
                     <Field
                       type="date"
                       className="form-control"
-                      id="fecha_Salida"
-                      name="fecha_Salida"
+                      id="Fecha_Salida"
+                      name="Fecha_Salida"
                     />
                   </div>
                   
@@ -130,14 +133,15 @@ const Reserva = () => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="telefono"
-                      name="telefono"
+                      id="Telefono"
+                      name="Telefono"
+                      placeholder="666212454"
                     />
                     <ErrorMessage
-                      name="telefono"
+                      name="Telefono"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.telefono}
+                          {errors.Telefono}
                         </div>
                       )}
                     />
@@ -148,13 +152,14 @@ const Reserva = () => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="email"
-                      name="email"
+                      id="Email"
+                      name="Email"
+                      placeholder="correo@gmail.com"
                     />
                     <ErrorMessage
-                      name="email"
+                      name="Email"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.email}</div>
+                        <div className="colorLetrasErroes">{errors.Email}</div>
                       )}
                     />
                   </div>
@@ -167,30 +172,32 @@ const Reserva = () => {
                       type="number"
                       step="0.01"
                       className="form-control"
-                      id="precio"
-                      name="precio"
+                      id="Precio_Total"
+                      name="Precio_Total"
+                      placeholder="cantidad de € a pagar "
                     />
                     <ErrorMessage
-                      name="precio"
+                      name="Precio_Total"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.precio}</div>
+                        <div className="colorLetrasErroes">{errors.Precio_Total}</div>
                       )}
                     />
                   </div>
                   <div className="mb-3">
-                    <label className="form-label colorLetras">Vivienda:</label>
+                    <label className="form-label colorLetras">numero de Vivienda:</label>
                     <Field
                       type="text"
                       step="0.01"
                       className="form-control"
-                      id="vivienda"
-                      name="vivienda"
+                      id="Num_Propiedad_Vivienda"
+                      name="Num_Propiedad_Vivienda"
+                      placeholder="codigo de Num_Propiedad_Vivienda"
                     />
                     <ErrorMessage
-                      name="vivienda"
+                      name="Num_Propiedad_Vivienda"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.vivienda}
+                          {errors.Num_Propiedad_Vivienda}
                         </div>
                       )}
                     />
