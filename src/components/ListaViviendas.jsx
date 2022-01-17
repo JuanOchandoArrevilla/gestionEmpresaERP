@@ -25,8 +25,9 @@ const ListaViviendas = () => {
               <tr>
                 <th scope="col">Numero De Propiedad</th>
                 <th scope="col">Provincia</th>
-                <th scope="col">Dirrecion</th>
+                <th scope="col">Municipio</th>
                 <th scope="col">Localidad</th>
+                <th scope="col">Dirrecion</th>
                 <th scope="col">Nº Habitaciones</th>
                 <th scope="col">Nº Personas</th>
                 <th scope="col">Baños</th>
@@ -41,8 +42,9 @@ const ListaViviendas = () => {
                   <tr key={item.Num_propiedad}>
                     <th scope="row">{item.Num_propiedad}</th>
                     <td>{item.Provincia}</td>
-                    <td>{item.Dirrecion}</td>
+                    <td>{item.Municipio}</td>
                     <td>{item.Localidad}</td>
+                    <td>{item.Dirrecion}</td>  
                     <td>{item.Num_Habitacion}</td>
                     <td>{item.Num_Personas}</td>
                     <td>{item.Baños}</td>

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const Viendas = () => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
-        
+
   return (
     <div className="formPosicion">
       <h1>Crear Viviendas</h1>
@@ -13,9 +13,10 @@ const Viendas = () => {
             <Formik
               initialValues={{
                 Num_propiedad: "",
-                Provincia:"",
-                Dirrecion: "",
+                Provincia: "",
+                Municipio: "",
                 Localidad: "",
+                Dirrecion: "",
                 Num_Habitacion: "",
                 Num_Personas: "",
                 Baños: "",
@@ -33,6 +34,10 @@ const Viendas = () => {
                   errores.Provincia = "por favor ingrese un valor";
                 }
 
+                if (!valores.Municipio) {
+                  errores.Municipio = "por favor ingrese un valor";
+                }
+
                 if (!valores.Dirrecion) {
                   errores.Dirrecion = "por favor ingrese una Dirrecion";
                 }
@@ -46,7 +51,8 @@ const Viendas = () => {
                 }
 
                 if (!valores.Num_Personas) {
-                  errores.Num_Personas = "por favor ingrese numeros de Num_Personas";
+                  errores.Num_Personas =
+                    "por favor ingrese numeros de Num_Personas";
                 }
                 if (!valores.Baños) {
                   errores.Baños =
@@ -54,7 +60,8 @@ const Viendas = () => {
                 }
 
                 if (!valores.Tamaño_MTS) {
-                  errores.Tamaño_MTS = "por favor ingrese el Tamaño_MTS de la vivienda";
+                  errores.Tamaño_MTS =
+                    "por favor ingrese el Tamaño_MTS de la vivienda";
                 }
 
                 if (!valores.Precio_Noche) {
@@ -62,19 +69,17 @@ const Viendas = () => {
                     "por favor ingrese el Precio_Noche de la vivienda por noche";
                 }
 
-
                 return errores;
               }}
               onSubmit={(valores, { resetForm }) => {
                 resetForm();
-            
+
                 console.log(JSON.stringify(valores));
                 console.log("Formulario enviado");
 
                 setEnviarFormulario(true);
-                setTimeout(() =>  setEnviarFormulario(false), 3000);
+                setTimeout(() => setEnviarFormulario(false), 3000);
               }}
-
             >
               {({ errors }) => (
                 <Form className="">
@@ -101,15 +106,13 @@ const Viendas = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label colorLetras">
-                     Provincia
-                    </label>
+                    <label className="form-label colorLetras">Provincia</label>
                     <Field
                       type="text"
                       className="form-control"
                       id="Provincia"
                       name="Provincia"
-                      placeholder="Santa cruz"
+                      placeholder="Santa cruz de tenerife"
                     />
                     <ErrorMessage
                       name="Provincia"
@@ -117,6 +120,44 @@ const Viendas = () => {
                         <div className="colorLetrasErroes">
                           {" "}
                           {errors.Provincia}{" "}
+                        </div>
+                      )}
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label colorLetras">Municipio</label>
+                    <Field
+                      type="text"
+                      className="form-control"
+                      id="Municipio"
+                      name="Municipio"
+                      placeholder="Santa Cruz"
+                    />
+                    <ErrorMessage
+                      name="Municipio"
+                      component={() => (
+                        <div className="colorLetrasErroes">
+                          {errors.Municipio}
+                        </div>
+                      )}
+                    />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label colorLetras">Localidad</label>
+                    <Field
+                      type="text"
+                      className="form-control"
+                      id="Localidad"
+                      name="Localidad"
+                      placeholder="taco"
+                    />
+                    <ErrorMessage
+                      name="Localidad"
+                      component={() => (
+                        <div className="colorLetrasErroes">
+                          {errors.Localidad}
                         </div>
                       )}
                     />
@@ -137,25 +178,6 @@ const Viendas = () => {
                         <div className="colorLetrasErroes">
                           {" "}
                           {errors.Dirrecion}{" "}
-                        </div>
-                      )}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <label className="form-label colorLetras">Localidad</label>
-                    <Field
-                      type="text"
-                      className="form-control"
-                      id="Localidad"
-                      name="Localidad"
-                      placeholder="taco"
-                    />
-                    <ErrorMessage
-                      name="Localidad"
-                      component={() => (
-                        <div className="colorLetrasErroes">
-                          {errors.Localidad}
                         </div>
                       )}
                     />
@@ -234,7 +256,9 @@ const Viendas = () => {
                     <ErrorMessage
                       name="Tamaño_MTS"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.Tamaño_MTS}</div>
+                        <div className="colorLetrasErroes">
+                          {errors.Tamaño_MTS}
+                        </div>
                       )}
                     />
                   </div>
@@ -254,11 +278,12 @@ const Viendas = () => {
                     <ErrorMessage
                       name="Precio_Noche"
                       component={() => (
-                        <div className="colorLetrasErroes">{errors.Precio_Noche}</div>
+                        <div className="colorLetrasErroes">
+                          {errors.Precio_Noche}
+                        </div>
                       )}
                     />
                   </div>
-                  
 
                   <button className="btn btn-primary" type="submit">
                     Guardar Vivienda
