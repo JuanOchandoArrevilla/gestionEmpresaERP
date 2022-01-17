@@ -1,10 +1,11 @@
 import React from 'react'
 import ListaViviendas from '../components/ListaViviendas'
-const PaginaListViviendas = () => {
+
+const PaginaListViviendas = ({viviendas = []}) => {
 
     return (
         <>
-            <ListaViviendas />        
+            <ListaViviendas viviendas={viviendas} />        
         </>
     )
 }

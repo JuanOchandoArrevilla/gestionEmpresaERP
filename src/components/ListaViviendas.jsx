@@ -1,19 +1,8 @@
-import React,{useState,useEffect} from 'react'
-import {showAllviviendas} from '../Services/services.js'
+import React,{} from 'react'
 
-const ListaViviendas = () => {
 
-    const [viviendas,setViviendas] = useState([]);
-
-    useEffect(() => {
-        showAllviviendas()
-            .then((res) => {
-            setViviendas(res.data);
-            }).catch((error) => {
-                console.log(error);
-              });
-    },[viviendas] );
-
+const ListaViviendas = ({viviendas = []}) => {
+  
     return (
         <>
          <div className="tamañoListVivienda tituloListVivienda">

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-const Viendas = () => {
+
+const Viendas = ({insertVivienda}) => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
 
   return (
@@ -74,9 +75,10 @@ const Viendas = () => {
               onSubmit={(valores, { resetForm }) => {
                 resetForm();
 
-                console.log(JSON.stringify(valores));
+                // console.log(JSON.stringify(valores));
+                
+                insertVivienda(valores);
                 console.log("Formulario enviado");
-
                 setEnviarFormulario(true);
                 setTimeout(() => setEnviarFormulario(false), 3000);
               }}

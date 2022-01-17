@@ -3,11 +3,11 @@ import FormViviendas from '../components/FormViviendas'
 
 
 
-const PaginaViviendas = () => {
+const PaginaViviendas = ({insertVivienda}) => {
 
     return (
         <>     
-        <FormViviendas /> 
+        <FormViviendas insertVivienda={insertVivienda} /> 
         
         </>
     )
