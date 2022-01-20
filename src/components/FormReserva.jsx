@@ -7,7 +7,7 @@ const Reserva = () => {
 
   return (
     <> 
-    <div className="formPosicion">
+    <div className="formReserva">
       <h1>Crear Reserva</h1>
       <div className="col-2">
         <div className="card mt-3 bg-dark">

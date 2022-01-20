@@ -19,14 +19,14 @@
   font-weight: bold;
 }
 
-.formPosicion {
+/* .formPosicion {
   position: absolute;
   left: 100px;
   top: 75px;
   width: 75%;
-}
+} */
 
-.listaVienda {
+/* .listaVienda {
   position: absolute;
   left:75%;
   top:75px;
@@ -45,5 +45,5 @@
 .scroll {
   overflow: auto;
   height: 90vh;
-}
+} */
 

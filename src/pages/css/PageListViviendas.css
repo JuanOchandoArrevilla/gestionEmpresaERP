@@ -1,0 +1,20 @@
+.listaVienda {
+    position: absolute;
+    left:75%;
+    top:75px;
+  }
+  
+  .tamañoListVivienda {
+    position: absolute;
+    left:1%;
+    width: 50%;
+  }
+  
+  .tituloListVivienda {
+    text-align: center;
+  }
+  
+  .scroll {
+    overflow: auto;
+    height: 90vh;
+  }

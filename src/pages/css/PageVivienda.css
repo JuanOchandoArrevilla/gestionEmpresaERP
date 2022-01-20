@@ -1,0 +1,21 @@
+.formVivienda {
+    position: absolute;
+    left: 100px;
+    top: 75px;
+    width: 75%;
+  }
+  
+  .colorLetras {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .colorLetrasErroes {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .enviarDatos {
+    color: green;
+    font-weight: bold;
+  }

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+
+import PaginaLogin from "./pages/PaginaLogin";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import PaginaViviendas from "./pages/PaginaViviendas";
@@ -9,7 +10,9 @@ import { showAllviviendas, crearViviendas } from "./Services/services";
 
 
 function App() {
+
   const [viviendas, setViviendas] = useState([]);
+  const [iniciarSesion, setIniciarSesion] = useState(false);
 
   useEffect(() => {
     showAllviviendas()
@@ -28,11 +31,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        
         <Routes>
-          <Route path="/viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />}/>
-          <Route path="/reserva" element={<PaginaReserva />} />
-          <Route path="/listaViviendas" element={<PaginaListViviendas viviendas={viviendas} />} />
+          <Route path="/" element={ iniciarSesion ? <Navbar /> : <PaginaLogin /> } />
+          <Route path="/viviendas" element={iniciarSesion ? <PaginaViviendas insertVivienda={insertVivienda} /> : null}/>
+          <Route path="/reserva" element={iniciarSesion ? <PaginaReserva /> : null} />
+          <Route path="/listaViviendas" element={iniciarSesion ? <PaginaListViviendas viviendas={viviendas} /> : null} />
         </Routes>
       </BrowserRouter>
     </>

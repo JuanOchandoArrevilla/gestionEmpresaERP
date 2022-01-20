@@ -1,4 +1,5 @@
 import React from 'react'
+import './css/PageReserva.css'
 import FormReserva from '../components/FormReserva';
 
 
@@ -6,7 +7,7 @@ import FormReserva from '../components/FormReserva';
 const PaginaReserva = () => {
     return (
         <> 
-        <div className="paginaTamanoVivienda">
+        <div className="">
           <FormReserva /> 
           </div>
         </>
