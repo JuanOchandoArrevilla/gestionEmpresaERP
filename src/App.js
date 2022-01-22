@@ -14,6 +14,8 @@ function App() {
   const [viviendas, setViviendas] = useState([]);
   const [iniciarSesion, setIniciarSesion] = useState(false);
 
+  
+
   useEffect(() => {
     showAllviviendas()
         .then((res) => {
