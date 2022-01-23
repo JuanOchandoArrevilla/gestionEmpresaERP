@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({ registroModal, userAmin }) => {
+const Login = ({ registroModal, userAmin, comprobarUsuario }) => {
   const [usuario, setUsuario] = useState({
     user: "",
     password: "",
@@ -19,8 +19,9 @@ const Login = ({ registroModal, userAmin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(usuario);
+   
     // e.target.resetForm();
+    comprobarUsuario(usuario);
     
   };
 

@@ -46,22 +46,28 @@ function App() {
     crearUsuario(datos,setUsersDB, usersDB)
    }
    
-   const ingresarUsuario = () => {
-      if (usersDB) {
-        
+   const comprobarUsuario = (datos) => {
+
+    console.log(usersDB[0].password , datos.password);
+    console.log(usersDB[0].usuario , datos.user);
+      if ((usersDB[0].usuario === datos.user) && (usersDB[0].password === datos.password)) {
+        setIniciarSesion(true);
       }
+
    }
 
   return (
     <>
       <BrowserRouter>
-        
-        <Routes>
-          <Route path="/" element={ iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} /> } />
-          <Route path="/viviendas" element={iniciarSesion ? <PaginaViviendas insertVivienda={insertVivienda} /> : null}/>
-          <Route path="/reserva" element={iniciarSesion ? <PaginaReserva /> : null} />
-          <Route path="/listaViviendas" element={iniciarSesion ? <PaginaListViviendas viviendas={viviendas} /> : null} />
-        </Routes>
+      { iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser}  comprobarUsuario={comprobarUsuario}/> }
+      
+      { iniciarSesion ? 
+        <Routes>  
+          <Route path="/viviendas" element={  <PaginaViviendas insertVivienda={insertVivienda} />  }/>
+          <Route path="/reserva" element={ <PaginaReserva />  } />
+          <Route path="/listaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
+        </Routes> : null
+      }
       </BrowserRouter>
     </>
   );
