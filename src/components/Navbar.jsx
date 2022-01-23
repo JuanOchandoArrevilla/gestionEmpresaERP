@@ -9,6 +9,53 @@ const Navbar = () => {
         <div className="collapse navbar-collapse navbar-brand" id="navbarNavDropdown">
           <ul className="navbar-nav">
 
+
+          <li className="nav-item dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+               Usuarios
+              </NavLink>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/usuario">
+                    Crear Usuarios
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/listaUsuarios">
+                    Lista de Usuarios
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="#">
+                   Modificar Usuario
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="#">
+                   Eliminar Usuario
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+
+
+
+
+
+
+
+
+
           <li className="nav-item dropdown">
               <NavLink
                 className="nav-link dropdown-toggle"

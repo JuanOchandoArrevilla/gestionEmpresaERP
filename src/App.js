@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
+import PaginaUsuarios from "./pages/paginaUsuarios"
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers } from "./Services/services";
 
 
@@ -47,6 +48,7 @@ function App() {
    }
    
    
+   
 
   return (
     <>
@@ -58,6 +60,7 @@ function App() {
           <Route path="/viviendas" element={  <PaginaViviendas insertVivienda={insertVivienda} />  }/>
           <Route path="/reserva" element={ <PaginaReserva />  } />
           <Route path="/listaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
+          <Route path="/usuario" element={ <PaginaUsuarios insertarUser={insertarUser}/>} />
         </Routes> : null
       }
       </BrowserRouter>

@@ -1,0 +1,25 @@
+.formUsuario {
+    position: absolute;
+    left: 100px;
+    top: 75px;
+    width: 90%;
+}
+
+.LetrasUsuarios {
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    position: relative;
+    top: 10px
+}
+
+.tamañoTitleRoles {
+    color: #fff;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.cuadroField {
+    position: relative;
+    right: 5px
+}
