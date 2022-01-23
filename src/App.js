@@ -3,19 +3,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaginaLogin from "./pages/PaginaLogin";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
+import NavbarUsuario from "./components/NavbarUsuario"
 import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers } from "./Services/services";
-
+import NavbarReservas from "./components/NavbarReservas";
+import NavbarViviendas from "./components/NavbarViviendas";
 
 function App() {
 
   const [viviendas, setViviendas] = useState([]);
   const [iniciarSesion, setIniciarSesion] = useState(false);
   const [usersDB, setUsersDB] = useState([]);
- 
+  const [iniciarUsuario, setIniciarUsuario] = useState(false);
+  const [errorMensaje, setErrorMensaje] = useState("");
+  const [rolDB, setRolDB] = useState([]);
 
   useEffect(() => {
     allUsers()
@@ -46,6 +50,25 @@ function App() {
    const insertarUser = (datos) => {
     crearUsuario(datos,setUsersDB, usersDB)
    }
+
+   
+
+   const comprobarUsuario = (datos) => {
+
+    usersDB.map((user) => {
+
+      if ((user.usuario === datos.user) && (user.password === datos.password) && (user.roles === "administrador")) {
+        setIniciarSesion(true);
+      } else if ((user.usuario === datos.user) && (user.password === datos.password)) {
+        setRolDB(user.roles);
+        setIniciarUsuario(true);
+      } else {
+        setErrorMensaje("usuario o contraseña son incorrectas");
+      }
+
+    })
+      
+   }
    
    
    
@@ -53,14 +76,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      { iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion}  /> }
-      
-      { iniciarSesion ? 
+      { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarUsuario rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario} errorMensaje={errorMensaje} /> }
+      { iniciarSesion || iniciarUsuario ? 
         <Routes>  
-          <Route path="/viviendas" element={  <PaginaViviendas insertVivienda={insertVivienda} />  }/>
-          <Route path="/reserva" element={ <PaginaReserva />  } />
-          <Route path="/listaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
-          <Route path="/usuario" element={ <PaginaUsuarios insertarUser={insertarUser}/>} />
+          <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
+          <Route path="/Reservas" element={<PaginaReserva />  } />
+          <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
+          <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser}/>} />
+          <Route path="/listadoReservas" element={ <NavbarReservas />} />
+          <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
         </Routes> : null
       }
       </BrowserRouter>

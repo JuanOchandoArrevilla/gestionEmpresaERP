@@ -26,12 +26,12 @@ const Navbar = () => {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/usuario">
+                  <NavLink className="dropdown-item" to="/Usuario">
                     Crear Usuarios
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/listaUsuarios">
+                  <NavLink className="dropdown-item" to="/ListaUsuarios">
                     Lista de Usuarios
                   </NavLink>
                 </li>
@@ -47,13 +47,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-
-
-
-
-
-
-
 
 
           <li className="nav-item dropdown">
@@ -72,12 +65,12 @@ const Navbar = () => {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/viviendas">
+                  <NavLink className="dropdown-item" to="/Viviendas">
                     Crear Viviendas
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/listaViviendas">
+                  <NavLink className="dropdown-item" to="/ListaViviendas">
                     Lista de Viviendas
                   </NavLink>
                 </li>
@@ -88,9 +81,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-
-
-
 
           
             <li className="nav-item dropdown">
@@ -109,7 +99,7 @@ const Navbar = () => {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/reserva">
+                  <NavLink className="dropdown-item" to="/Reservas">
                     Crear Reserva
                   </NavLink>
                 </li>

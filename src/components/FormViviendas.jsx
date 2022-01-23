@@ -74,8 +74,6 @@ const Viendas = ({insertVivienda}) => {
               }}
               onSubmit={(valores, { resetForm }) => {
                 resetForm();
-
-                // console.log(JSON.stringify(valores));
                 
                 insertVivienda(valores);
                 console.log("Formulario enviado");

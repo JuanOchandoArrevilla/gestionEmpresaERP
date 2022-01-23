@@ -4,14 +4,14 @@ import swal from 'sweetalert';
 import Login from "../components/Login";
 import Registro from "../components/Registro";
 
-const PaginaLogin = ({usersDB = [], insertarUser, setIniciarSesion}) => {
+const PaginaLogin = ({usersDB = [], insertarUser, comprobarUsuario, errorMensaje}) => {
 
 
   const [show,setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const [userAmin, setUserAmin] = useState(false);
-  const [errorMensaje, setErrorMensaje] = useState("");
+  
 
 
   
@@ -29,17 +29,7 @@ const PaginaLogin = ({usersDB = [], insertarUser, setIniciarSesion}) => {
     }  
   }
 
-  const comprobarUsuario = (datos) => {
-
-    console.log(usersDB[0].password , datos.password);
-    console.log(usersDB[0].usuario , datos.user);
-      if ((usersDB[0].usuario === datos.user) && (usersDB[0].password === datos.password)) {
-        setIniciarSesion(true);
-      } else {
-        setErrorMensaje("usuario o contraseña son incorrectas");
-      }
-
-   }
+ 
 
   return (
     <>
