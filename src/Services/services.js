@@ -18,4 +18,18 @@ const crearViviendas = (datos, setVivienda, vivienda) => {
     });
 };
 
-module.exports = { showAllviviendas, crearViviendas };
+const crearUsuario = (datos, setUser, users) => {
+  return axios
+    .post("http://localhost:8000/api/v1/user", datos)
+    .then((res) => {
+      return setUser(users.push(res.data));
+    })
+}
+
+const allUsers = () => {
+    return axios
+      .get('http://localhost:8000/api/v1/allUser')
+      .then((res) => res.data);
+}
+
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers };

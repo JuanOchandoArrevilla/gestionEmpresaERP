@@ -3,21 +3,28 @@ import "./css/PageLogin.css";
 import Login from "../components/Login";
 import Registro from "../components/Registro";
 
-const PaginaLogin = () => {
+const PaginaLogin = ({usersDB = [], insertarUser}) => {
 
 
   const [show,setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const [userAmin, setUserAmin] = useState(false);
   
   const registroModal = () => {
-    handleShow();
+    if (usersDB.length >= 1) {
+      setUserAmin(true);
+      alert("El programa ya tiene un usuario administrador")
+    } else {
+      handleShow();
+    }
+    
   }
 
   return (
     <>
-      <Login registroModal={registroModal}/>
-      <Registro show={show} onHide={handleClose} />
+      <Login registroModal={registroModal} userAmin={userAmin}/>
+      <Registro show={show} onHide={handleClose} insertarUser={insertarUser}/>
     </>
   );
 };

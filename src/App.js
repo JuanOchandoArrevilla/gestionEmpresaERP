@@ -6,13 +6,25 @@ import Navbar from "./components/Navbar";
 import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
-import { showAllviviendas, crearViviendas } from "./Services/services";
+import { showAllviviendas, crearViviendas, crearUsuario, allUsers } from "./Services/services";
 
 
 function App() {
 
   const [viviendas, setViviendas] = useState([]);
   const [iniciarSesion, setIniciarSesion] = useState(false);
+  const [usersDB, setUsersDB] = useState([]);
+ 
+
+  useEffect(() => {
+    allUsers()
+      .then((res) => {
+        setUsersDB(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+         });
+  }, [usersDB])
 
   
 
@@ -30,12 +42,22 @@ function App() {
       crearViviendas(datos,setViviendas,viviendas);
    }
 
+   const insertarUser = (datos) => {
+    crearUsuario(datos,setUsersDB, usersDB)
+   }
+   
+   const ingresarUsuario = () => {
+      if (usersDB) {
+        
+      }
+   }
+
   return (
     <>
       <BrowserRouter>
         
         <Routes>
-          <Route path="/" element={ iniciarSesion ? <Navbar /> : <PaginaLogin /> } />
+          <Route path="/" element={ iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} /> } />
           <Route path="/viviendas" element={iniciarSesion ? <PaginaViviendas insertVivienda={insertVivienda} /> : null}/>
           <Route path="/reserva" element={iniciarSesion ? <PaginaReserva /> : null} />
           <Route path="/listaViviendas" element={iniciarSesion ? <PaginaListViviendas viviendas={viviendas} /> : null} />

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-const Registro = ({ show, onHide }) => {
-  const [mostrarMensaje, setMostrarMensaje] = useState(false);
+const Registro = ({ show, onHide , insertarUser}) => {
+  const [mostrarMensaje,setMostrarMensaje] = useState(false);
 
   const cerrar3seg = () => {
     onHide();
@@ -32,7 +32,7 @@ const Registro = ({ show, onHide }) => {
                 initialValues={{
                   usuario: "",
                   password: "",
-                  roles: "",
+                  roles: "administrador",
                 }}
                 validate={(valores) => {
                   let errores = {};
@@ -53,8 +53,9 @@ const Registro = ({ show, onHide }) => {
                 onSubmit={(valores, { resetForm }) => {
                   resetForm();
 
-                  console.log(JSON.stringify(valores));
+                  // console.log(JSON.stringify(valores));
                   setMostrarMensaje(true);
+                  insertarUser(valores);
                   setTimeout(() => cerrar3seg(), 3000);
                 }}
               >
