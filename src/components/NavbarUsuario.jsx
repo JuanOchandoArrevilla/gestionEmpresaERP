@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const NavbarUsuario = ({ rolDB = [] }) => {
   let modulos = [rolDB];
   modulos = rolDB.split(",");
-  
+  const navigate = useNavigate();
     
-     
+  const handleClick = () => {
+    navigate("/")
+    window.location.reload();
+  }
 
   return (
+    
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -28,6 +32,7 @@ const NavbarUsuario = ({ rolDB = [] }) => {
               ))}
             </ul>
           </div>
+          <button onClick={() => handleClick()}>Cerrar Sesion</button>
         </div>
       </nav>
 

@@ -4,3 +4,17 @@
     top: 75px;
     width: 75%;
   }
+
+  .listaDisponible {
+    position: absolute;
+    left: 50%;
+    top: 305px;
+    width: 50%;
+  }
+
+  .formDisponible {
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    width: 50%;
+  }

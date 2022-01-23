@@ -1,8 +1,15 @@
 .formUsuario {
     position: absolute;
     left: 100px;
-    top: 75px;
+    top: 80px;
     width: 90%;
+    
+    
+}
+
+.formUsuarioBoton {
+    position: relative;
+    top: 15px;
 }
 
 .LetrasUsuarios {
@@ -23,3 +30,30 @@
     position: relative;
     right: 5px
 }
+
+.colorLetras {
+    color: white;
+    font-weight: bold;
+  }
+
+
+.listaUsuario {
+    position: absolute;
+    left:75%;
+    top:75px;
+  }
+  
+  .tamañoListUsuario {
+    position: absolute;
+    left:40%;
+    width: 50%;
+  }
+  
+  .tituloListUsuario {
+    text-align: center;
+  }
+  
+  .scroll {
+    overflow: auto;
+    height: 90vh;
+  }

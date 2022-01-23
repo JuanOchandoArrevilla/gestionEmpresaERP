@@ -6,10 +6,11 @@ const FormUsuarios = ({ insertarUser }) => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
   return (
     <>
-      <div className="formUsuario">
+    
+      <div className="formUsuario colorLetras ">
         <h1>Crear Usuarios</h1>
         <div className="col-2">
-          <div className="card mt-3 bg-dark">
+          <div className="card w-auto p-3 bg-dark">
             <div className="card-body ">
               <Formik
                 initialValues={{
@@ -131,7 +132,7 @@ const FormUsuarios = ({ insertarUser }) => {
                       </label>
                     </div>
 
-                    <button className="btn btn-primary" type="submit">
+                    <button className="btn btn-primary formUsuarioBoton" type="submit">
                       Guardar Usuario
                     </button>
                     {enviarFormulario && (

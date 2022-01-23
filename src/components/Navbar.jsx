@@ -1,7 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+    const handleClick = () => {
+      navigate("/")
+      window.location.reload();
+    }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -104,7 +111,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="">
+                  <NavLink className="dropdown-item" to="/ListaReservas">
                     Lista de reserva
                   </NavLink>
                 </li>
@@ -134,8 +141,11 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
+          
         </div>
+        <button onClick={() => handleClick()}>Cerrar Sesion</button>
       </div>
+      
     </nav>
     
   );

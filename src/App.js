@@ -8,9 +8,10 @@ import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
-import { showAllviviendas, crearViviendas, crearUsuario, allUsers } from "./Services/services";
+import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas } from "./Services/services";
 import NavbarReservas from "./components/NavbarReservas";
 import NavbarViviendas from "./components/NavbarViviendas";
+import PaginaListReservas from "./pages/PaginaListReservas";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
   const [iniciarUsuario, setIniciarUsuario] = useState(false);
   const [errorMensaje, setErrorMensaje] = useState("");
   const [rolDB, setRolDB] = useState([]);
+  const [reservas, setReservas] = useState([]);
 
   useEffect(() => {
     allUsers()
@@ -42,6 +44,15 @@ function App() {
         console.log(error);
          });
    }, [viviendas]);
+
+   useEffect(() => {
+    allReservas()
+      .then((res) => {
+        setReservas(res.data);
+      }).catch((error) => {
+        console.log(error);
+         });
+   }, [reservas]);
 
    const insertVivienda = (datos) => {
       crearViviendas(datos,setViviendas,viviendas);
@@ -82,9 +93,10 @@ function App() {
           <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
           <Route path="/Reservas" element={<PaginaReserva />  } />
           <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
-          <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser}/>} />
+          <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
           <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
+          <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
         </Routes> : null
       }
       </BrowserRouter>

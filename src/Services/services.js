@@ -32,4 +32,10 @@ const allUsers = () => {
       .then((res) => res.data);
 }
 
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers };
+const allReservas = () => {
+  return axios
+  .get('http://localhost:8000/api/v1/allReservas')
+  .then((res) => res.data);
+}
+
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas };

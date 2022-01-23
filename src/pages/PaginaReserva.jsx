@@ -1,17 +1,15 @@
-import React from 'react'
-import './css/PageReserva.css'
-import FormReserva from '../components/FormReserva';
-
-
+import React from "react";
+import "./css/PageReserva.css";
+import FormReserva from "../components/FormReserva";
+import ListaDisponible from "../components/ListaDisponible";
 
 const PaginaReserva = () => {
-    return (
-        <> 
-        <div className="">
-          <FormReserva /> 
-          </div>
-        </>
-    )
-}
+  return (
+    <>
+      <FormReserva />
+      <ListaDisponible />
+    </>
+  );
+};
 
-export default PaginaReserva
+export default PaginaReserva;
