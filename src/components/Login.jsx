@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({ registroModal, userAmin, comprobarUsuario }) => {
+const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
   const [usuario, setUsuario] = useState({
     user: "",
     password: "",
@@ -69,6 +69,14 @@ const Login = ({ registroModal, userAmin, comprobarUsuario }) => {
                     >
                       Ingresar
                     </button>
+                    {
+                            errorMensaje ? (
+                                <p className="alert alert-danger">
+                                    {errorMensaje}
+                                </p>
+                            ) : null
+                        }
+
                     </form>
                     {userAmin ? null : (
                       <div>

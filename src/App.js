@@ -46,20 +46,12 @@ function App() {
     crearUsuario(datos,setUsersDB, usersDB)
    }
    
-   const comprobarUsuario = (datos) => {
-
-    console.log(usersDB[0].password , datos.password);
-    console.log(usersDB[0].usuario , datos.user);
-      if ((usersDB[0].usuario === datos.user) && (usersDB[0].password === datos.password)) {
-        setIniciarSesion(true);
-      }
-
-   }
+   
 
   return (
     <>
       <BrowserRouter>
-      { iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser}  comprobarUsuario={comprobarUsuario}/> }
+      { iniciarSesion ? <Navbar /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion}  /> }
       
       { iniciarSesion ? 
         <Routes>  
