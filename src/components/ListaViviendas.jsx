@@ -5,7 +5,7 @@ const ListaViviendas = ({viviendas = []}) => {
   
     return (
         <>
-         <div className="tamañoListVivienda tituloListVivienda">
+         <div className="tamañoListVivienda  tituloListVivienda">
         <h1>Listado de Viviendas</h1>
         
         <div className="scroll">

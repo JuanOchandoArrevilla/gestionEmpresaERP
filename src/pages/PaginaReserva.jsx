@@ -7,7 +7,7 @@ const PaginaReserva = () => {
   return (
     <>
       <FormReserva />
-      <ListaDisponible />
+      <ListaDisponible    />
     </>
   );
 };

@@ -38,4 +38,12 @@ const allReservas = () => {
   .then((res) => res.data);
 }
 
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas };
+const listDisponible = (f_Entrada, f_Salida) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/buscarFecha/${f_Entrada}/${f_Salida} `)
+    .then((res) => res.data);
+}
+
+
+
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible };

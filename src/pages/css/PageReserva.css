@@ -18,3 +18,20 @@
     top: 150px;
     width: 50%;
   }
+
+  
+  .tamañoListDisponible {
+    position: absolute;
+    left:45%;
+    width: 50%;
+    top:400px;
+  }
+  
+  .tituloListVivienda {
+    text-align: center;
+  }
+  
+  .scrollDisponible {
+    overflow: auto;
+    height: 50vh;
+  }

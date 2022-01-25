@@ -22,6 +22,7 @@ function App() {
   const [errorMensaje, setErrorMensaje] = useState("");
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
+  // const [viviendasDisponibles, setViviendasDisponibles] = useState();
 
   useEffect(() => {
     allUsers()
@@ -53,6 +54,17 @@ function App() {
         console.log(error);
          });
    }, [reservas]);
+
+  
+   
+  //  const consultaDisponibles = async(entrada, salida) => {
+  //   const viviendas = await listDisponible(entrada,salida);
+  //   // setViviendasDisponibles(viviendas);
+  //   viviendas.map((vivienda) => {
+  //       console.log(vivienda.Num_propiedad);
+  //       // setViviendasDisponibles()
+  //   });
+  //  }
 
    const insertVivienda = (datos) => {
       crearViviendas(datos,setViviendas,viviendas);
@@ -91,7 +103,7 @@ function App() {
       { iniciarSesion || iniciarUsuario ? 
         <Routes>  
           <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
-          <Route path="/Reservas" element={<PaginaReserva />  } />
+          <Route path="/Reservas" element={<PaginaReserva  />  } />
           <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
           <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
           <Route path="/listadoReservas" element={ <NavbarReservas />} />

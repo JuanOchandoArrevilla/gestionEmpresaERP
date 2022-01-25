@@ -20,7 +20,6 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    // e.target.resetForm();
     comprobarUsuario(usuario);
     
   };
