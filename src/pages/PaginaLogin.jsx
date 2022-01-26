@@ -12,13 +12,10 @@ const PaginaLogin = ({usersDB = [], insertarUser, comprobarUsuario, errorMensaje
   const handleClose = () => setShow(false);
   const [userAmin, setUserAmin] = useState(false);
   
-
-
   
   const registroModal = () => {
     if (usersDB.length >= 1) {
       setUserAmin(true);
-      // alert("El programa ya tiene un usuario administrador")
       swal({
         text: "El programa ya tiene un usuario administrador", 
         icon: "error",

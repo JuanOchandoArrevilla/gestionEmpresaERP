@@ -33,18 +33,26 @@ const Viendas = ({insertVivienda}) => {
 
                 if (!valores.Provincia) {
                   errores.Provincia = "por favor ingrese un valor";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Provincia)) {
+                  errores.Provincia = "por favor ingrese una provincia correcto";
                 }
 
                 if (!valores.Municipio) {
                   errores.Municipio = "por favor ingrese un valor";
+                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Municipio)) {
+                  errores.Municipio = "por favor ingrese una Municipio correcto";
                 }
 
                 if (!valores.Dirrecion) {
                   errores.Dirrecion = "por favor ingrese una Dirrecion";
+                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Dirrecion)) {
+                  errores.Dirrecion = "por favor ingrese una Dirrecion correcto";
                 }
 
                 if (!valores.Localidad) {
                   errores.Localidad = "por favor ingrese una Localidad";
+                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Localidad)) {
+                  errores.Localidad = "por favor ingrese una Localidad correcto";
                 }
                 if (!valores.Num_Habitacion) {
                   errores.Num_Habitacion =

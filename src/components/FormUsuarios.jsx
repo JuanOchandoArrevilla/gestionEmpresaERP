@@ -23,10 +23,13 @@ const FormUsuarios = ({ insertarUser }) => {
 
                   if (!valores.usuario) {
                     errores.usuario = "por favor ingrese un valor";
+                  }else if (!/^\w{6,10}$/.test(valores.usuario)) {
+                    errores.usuario = "error usuario requieres 6-10 caracteres sin caracter especial";
                   }
-
                   if (!valores.password) {
                     errores.password = "por favor ingrese un valor";
+                  }else if (!/^\w{8,15}$/.test(valores.password)) {
+                    errores.password = "8-15 caracteres sin caracter especial";
                   }
 
                   if (!valores.roles) {
@@ -47,8 +50,8 @@ const FormUsuarios = ({ insertarUser }) => {
                   rol = rol.slice(1);
                   valores.roles = rol;
                   insertarUser(valores);
-                  setEnviarFormulario(true);
-                  setTimeout(() => setEnviarFormulario(false), 3000);
+                  // setEnviarFormulario(true);
+                  // setTimeout(() => setEnviarFormulario(false), 3000);
                 }}
               >
                 {({ errors }) => (
@@ -129,6 +132,16 @@ const FormUsuarios = ({ insertarUser }) => {
                           value="Mantenimiento y Limpieza"
                         />
                         gestion de Mantenimiento y Limpieza
+                      </label>
+
+                      <label>
+                        <Field
+                          className="cuadroField"
+                          type="checkbox"
+                          name="roles"
+                          value="Usuarios"
+                        />
+                        gestion de usuarios
                       </label>
                     </div>
 

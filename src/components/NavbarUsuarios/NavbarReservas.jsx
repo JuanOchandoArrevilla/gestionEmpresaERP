@@ -11,9 +11,7 @@ import { NavLink } from "react-router-dom";
             className="collapse navbar-collapse navbar-brand"
             id="navbarNavDropdown"
           >
-            <ul className="navbar-nav">
-             
-               
+            <ul className="navbar-nav"> 
               <li className="nav-item">
               <NavLink className="nav-link" to="/Reservas">
                 Crear Reserva

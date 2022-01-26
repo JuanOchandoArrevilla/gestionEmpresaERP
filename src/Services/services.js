@@ -14,7 +14,6 @@ const crearViviendas = (datos, setVivienda, vivienda) => {
     })
     .catch((error) => {
         console.log(error.response)
-    //   console.log(error);
     });
 };
 
@@ -44,6 +43,10 @@ const listDisponible = (f_Entrada, f_Salida) => {
     .then((res) => res.data);
 }
 
+const deleteUser = (id) => {
+  return axios.delete(`http://localhost:8000/api/v1/usuarios/${id}`).then(() => allUsers());
+}
 
 
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible };
+
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser };

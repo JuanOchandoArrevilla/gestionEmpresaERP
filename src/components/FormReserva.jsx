@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
 const Reserva = () => {
-
+  const [enviarFormulario, setEnviarFormulario] = useState(false);
   return (
     <> 
     <div className="formReserva">
@@ -32,11 +32,17 @@ const Reserva = () => {
 
                 if (!valores.Nombre) {
                   errores.Nombre = "por favor ingrese un valor";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Nombre)) {
+                  errores.Nombre = "por favor ingrese un nombre correcto";
                 }
-
+                
                 if (!valores.Telefono) {
                   errores.Telefono = "por favor ingrese un valor";
+                } else if (!/^\d{9}$/.test(valores.Telefono) ) {
+                  errores.Telefono = "telefono no valido"
                 }
+
+
                 if (!valores.Email) {
                   errores.Email = "por favor ingrese valor";
                 } else if (
@@ -63,8 +69,8 @@ const Reserva = () => {
                 console.log(JSON.stringify(valores));
                 console.log("Formulario enviado");
 
-                // setEnviarFormulario(true);
-                // setTimeout(() =>  setEnviarFormulario(false), 3000);
+                setEnviarFormulario(true);
+                setTimeout(() =>  setEnviarFormulario(false), 3000);
               }}
             >
               {({ errors }) => (
@@ -72,7 +78,7 @@ const Reserva = () => {
                   <div className="mb-3">
                     <label className="form-label colorLetras">Nº Reservación</label>
                     <Field
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="Num_Reservacion"
                       name="Num_Reservacion"
@@ -186,8 +192,7 @@ const Reserva = () => {
                   <div className="mb-3">
                     <label className="form-label colorLetras">numero de Vivienda:</label>
                     <Field
-                      type="text"
-                      step="0.01"
+                      type="number"
                       className="form-control"
                       id="Num_Propiedad_Vivienda"
                       name="Num_Propiedad_Vivienda"
@@ -206,9 +211,9 @@ const Reserva = () => {
                   <button className="btn btn-primary" type="submit">
                     Guardar Reserva
                   </button>
-                  {/* {enviarFormulario && (
-                    <p className="enviarDatos">Datos guardado</p> */}
-                  {/* )} */}
+                  {enviarFormulario && (
+                      <p className="enviarDatos">Datos guardado</p>
+                    )}
                 </Form>
               )}
             </Formik>

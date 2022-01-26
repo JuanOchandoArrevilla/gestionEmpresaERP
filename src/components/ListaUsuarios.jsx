@@ -1,6 +1,43 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {deleteUser} from "../Services/services" 
+import swal from 'sweetalert';
+const ListaUsuarios = ({ usersDB = [] }) => {
 
-const ListaUsuarios = ({ usersDB }) => {
+  const [actualiza, setActualiza] = useState(usersDB)
+  
+  
+
+  // useEffect(() => {
+  //   setActualiza(usersDB)
+    
+  // },[usersDB] )
+
+
+  const confirmarDeleteUser = (id, rol,name) => {
+    if (rol === "administrador") {
+      swal({
+        title: "No se puede eliminar el usuario administrador",   
+      })
+    } else {
+      swal({
+        // title: "Are you sure?",
+        text: `¿Esta seguro de eliminar el usuario ${name}`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+       .then((willDelete) => { 
+        if (willDelete) {
+           deleteUser(id)
+            swal("usuario eliminado correctamente", {
+             icon: "success",    
+            });
+        } 
+      });
+    }
+
+  }
+  
   return (
     <>
       <div className="tamañoListUsuario tituloListUsuario">
@@ -12,12 +49,14 @@ const ListaUsuarios = ({ usersDB }) => {
                 <th scope="col">Usuario</th>
                 <th scope="col">Password</th>
                 <th scope="col">Roles</th>
-                
+                <th scope="col">Acciones</th>
                 
               </tr>
             </thead>
             <tbody>
-              {usersDB.map((item) => {
+              {
+            actualiza !== undefined || actualiza.length > 0 ? 
+              actualiza.map((item) => {
                 return (
                   <tr key={item.id}>
                     <th scope="row">{item.usuario}</th>
@@ -28,7 +67,7 @@ const ListaUsuarios = ({ usersDB }) => {
                       {"  "}
                       <button
                         className="btn-danger"
-                       
+                        onClick={() => confirmarDeleteUser(item.id,item.roles, item.usuario)}
                       >
                         Borrar
                       </button>
@@ -36,7 +75,10 @@ const ListaUsuarios = ({ usersDB }) => {
                     
                   </tr>
                 );
-              })}
+              })
+            :
+            null
+            }
             </tbody>
           </table>
         </div>

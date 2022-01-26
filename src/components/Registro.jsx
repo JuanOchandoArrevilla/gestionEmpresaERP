@@ -53,7 +53,7 @@ const Registro = ({ show, onHide , insertarUser}) => {
                 onSubmit={(valores, { resetForm }) => {
                   resetForm();
 
-                  // console.log(JSON.stringify(valores));
+                  
                   setMostrarMensaje(true);
                   insertarUser(valores);
                   setTimeout(() => cerrar3seg(), 3000);

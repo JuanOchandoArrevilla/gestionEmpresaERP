@@ -3,14 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaginaLogin from "./pages/PaginaLogin";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import NavbarUsuario from "./components/NavbarUsuario"
+import NavbarUsuario from "./components/NavbarUsuarios/NavbarUsuario"
 import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas } from "./Services/services";
-import NavbarReservas from "./components/NavbarReservas";
-import NavbarViviendas from "./components/NavbarViviendas";
+import NavbarReservas from "./components/NavbarUsuarios/NavbarReservas";
+import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
 import PaginaListReservas from "./pages/PaginaListReservas";
 
 function App() {
@@ -22,16 +22,16 @@ function App() {
   const [errorMensaje, setErrorMensaje] = useState("");
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
-  // const [viviendasDisponibles, setViviendasDisponibles] = useState();
+  
 
-  useEffect(() => {
-    allUsers()
-      .then((res) => {
-        setUsersDB(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-         });
+  
+
+  useEffect(() => {  
+        allUsers()
+          .then((res) => {   
+             setUsersDB(res.data);  
+          });   
+        
   }, [usersDB])
 
   
@@ -56,25 +56,16 @@ function App() {
    }, [reservas]);
 
   
-   
-  //  const consultaDisponibles = async(entrada, salida) => {
-  //   const viviendas = await listDisponible(entrada,salida);
-  //   // setViviendasDisponibles(viviendas);
-  //   viviendas.map((vivienda) => {
-  //       console.log(vivienda.Num_propiedad);
-  //       // setViviendasDisponibles()
-  //   });
-  //  }
-
+  
    const insertVivienda = (datos) => {
       crearViviendas(datos,setViviendas,viviendas);
    }
 
+  
    const insertarUser = (datos) => {
     crearUsuario(datos,setUsersDB, usersDB)
    }
 
-   
 
    const comprobarUsuario = (datos) => {
 
