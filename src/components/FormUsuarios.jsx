@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-
+import swal from 'sweetalert';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const FormUsuarios = ({ insertarUser }) => {
-  const [enviarFormulario, setEnviarFormulario] = useState(false);
+  // const [enviarFormulario, setEnviarFormulario] = useState(false);  
   return (
     <>
-    
-      <div className="formUsuario colorLetras ">
-        <h1>Crear Usuarios</h1>
-        <div className="col-2">
-          <div className="card w-auto p-3 bg-dark">
+    <h1 className="tituloListUsuario" >Alta Usuarios</h1>
+      <div className="formUsuario colorLetras   ">
+        <div className="col-5 " >
+          <div className="card mt-3 bg-dark  ">
             <div className="card-body ">
               <Formik
                 initialValues={{
@@ -50,8 +49,9 @@ const FormUsuarios = ({ insertarUser }) => {
                   rol = rol.slice(1);
                   valores.roles = rol;
                   insertarUser(valores);
-                  // setEnviarFormulario(true);
-                  // setTimeout(() => setEnviarFormulario(false), 3000);
+                  
+                 
+                  
                 }}
               >
                 {({ errors }) => (
@@ -143,14 +143,22 @@ const FormUsuarios = ({ insertarUser }) => {
                         />
                         gestion de usuarios
                       </label>
+                      <label>
+                        <Field
+                          className="cuadroField"
+                          type="checkbox"
+                          name="roles"
+                          value="Estadisticas"
+                        />
+                        gestion de estadisticas
+                      </label>
+                    
                     </div>
 
-                    <button className="btn btn-primary formUsuarioBoton" type="submit">
+                    <button className="btn btn-primary formUsuarioBoton" type="submit" >
                       Guardar Usuario
                     </button>
-                    {enviarFormulario && (
-                      <p className="enviarDatos">Datos guardado</p>
-                    )}
+                   
                   </Form>
                 )}
               </Formik>

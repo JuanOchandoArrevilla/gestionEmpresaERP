@@ -84,7 +84,7 @@ const Viendas = ({insertVivienda}) => {
                 resetForm();
                 
                 insertVivienda(valores);
-                console.log("Formulario enviado");
+               
                 setEnviarFormulario(true);
                 setTimeout(() => setEnviarFormulario(false), 3000);
               }}

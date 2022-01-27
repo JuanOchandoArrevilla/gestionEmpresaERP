@@ -12,10 +12,7 @@ const ListaDisponible = () => {
    const consultaDisponibles = async(entrada, salida) => {
     const viviendas = await listDisponible(entrada,salida);
      setViviendasDisponibles(viviendas);
-    // viviendas.map((vivienda) => {
-    //     console.log(vivienda.Num_propiedad);
-    //     // setViviendasDisponibles()
-    // });
+   
    }
 
   const handleChange = (e) => {
@@ -30,9 +27,7 @@ const ListaDisponible = () => {
   
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    //  console.log(JSON.stringify(fechas));
-    // console.log(fechas);
+    e.preventDefault();   
     consultaDisponibles(fechas.Fecha_Entrada, fechas.Fecha_Salida);
     
   };

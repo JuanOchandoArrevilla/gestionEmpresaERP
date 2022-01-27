@@ -35,7 +35,7 @@ const ListaReservas = ({reservas = []}) => {
                     <td>{item.Fecha_Salida}</td>
                     <td>{item.Telefono}</td>  
                     <td>{item.Email}</td>
-                    <td>{item.Precio_Total}</td>
+                    <td>{`${item.Precio_Total} €`}</td>
                     <td>{item.Num_propiedad_Vivienda}</td>
                    
                   </tr>

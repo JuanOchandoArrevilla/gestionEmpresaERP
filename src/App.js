@@ -8,6 +8,7 @@ import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
+import PaginaListUsuarios from "./pages/PaginaListUsuarios";
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas } from "./Services/services";
 import NavbarReservas from "./components/NavbarUsuarios/NavbarReservas";
 import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
@@ -94,12 +95,15 @@ function App() {
       { iniciarSesion || iniciarUsuario ? 
         <Routes>  
           <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
-          <Route path="/Reservas" element={<PaginaReserva  />  } />
           <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
-          <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
-          <Route path="/listadoReservas" element={ <NavbarReservas />} />
-          <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
+          <Route path="/Reservas" element={<PaginaReserva  />  } />
           <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
+          <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
+          <Route path="/ListaUsuarios" element={ <PaginaListUsuarios usersDB={usersDB} />} />
+          <Route path="/listadoReservas" element={ <NavbarReservas />} />
+          
+          <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
+          
         </Routes> : null
       }
       </BrowserRouter>

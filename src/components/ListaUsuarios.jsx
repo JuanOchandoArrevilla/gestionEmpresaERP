@@ -1,17 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {deleteUser} from "../Services/services" 
 import swal from 'sweetalert';
 const ListaUsuarios = ({ usersDB = [] }) => {
 
   const [actualiza, setActualiza] = useState(usersDB)
   
-  
-
-  // useEffect(() => {
-  //   setActualiza(usersDB)
-    
-  // },[usersDB] )
-
+ 
 
   const confirmarDeleteUser = (id, rol,name) => {
     if (rol === "administrador") {
@@ -20,7 +14,6 @@ const ListaUsuarios = ({ usersDB = [] }) => {
       })
     } else {
       swal({
-        // title: "Are you sure?",
         text: `¿Esta seguro de eliminar el usuario ${name}`,
         icon: "warning",
         buttons: true,
@@ -40,7 +33,7 @@ const ListaUsuarios = ({ usersDB = [] }) => {
   
   return (
     <>
-      <div className="tamañoListUsuario tituloListUsuario">
+      <div className="tamañoListUsuario tituloListUsuario ">
         <h1 className="">Lista de usuarios</h1>
         <div className="scroll">
           <table className="table table-striped ">
@@ -55,7 +48,7 @@ const ListaUsuarios = ({ usersDB = [] }) => {
             </thead>
             <tbody>
               {
-            actualiza !== undefined || actualiza.length > 0 ? 
+             actualiza.length > 0 &&
               actualiza.map((item) => {
                 return (
                   <tr key={item.id}>
@@ -71,13 +64,10 @@ const ListaUsuarios = ({ usersDB = [] }) => {
                       >
                         Borrar
                       </button>
-                    </td>
-                    
+                    </td>      
                   </tr>
                 );
               })
-            :
-            null
             }
             </tbody>
           </table>

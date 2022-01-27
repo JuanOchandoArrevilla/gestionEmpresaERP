@@ -8,20 +8,17 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     setUsuario((data) => ({
       ...data,
       [name]: value,
-     
     }));
-    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
     comprobarUsuario(usuario);
-    
   };
 
   return (
@@ -34,48 +31,38 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
                     <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                    <form className="login-form" onSubmit={handleSubmit}>  
-                    <div className="form-outline form-white mb-4">
-                      <label className="form-label" >
-                        Usuario
-                      </label>
-                      <input
-                        type="user"
-                        name="user"
-                        className="form-control form-control-lg"
-                        value={usuario.user}
-                        onChange={handleChange}
-                      />
-                    </div>
+                    <form className="login-form" onSubmit={handleSubmit}>
+                      <div className="form-outline form-white mb-4">
+                        <label className="form-label">Usuario</label>
+                        <input
+                          type="user"
+                          name="user"
+                          className="form-control form-control-lg"
+                          value={usuario.user}
+                          onChange={handleChange}
+                        />
+                      </div>
 
-                    <div className="form-outline form-white mb-4">
-                      <label className="form-label" >
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        name="password"
-                        className="form-control form-control-lg"
-                        value={usuario.password}
-                        onChange={ handleChange}
-                        
-                      />
-                    </div>
+                      <div className="form-outline form-white mb-4">
+                        <label className="form-label">Password</label>
+                        <input
+                          type="password"
+                          name="password"
+                          className="form-control form-control-lg"
+                          value={usuario.password}
+                          onChange={handleChange}
+                        />
+                      </div>
 
-                    <button
-                      className="btn btn-outline-light btn-lg px-5"
-                      type="submit"
-                    >
-                      Ingresar
-                    </button>
-                    {
-                            errorMensaje ? (
-                                <p className="alert alert-danger">
-                                    {errorMensaje}
-                                </p>
-                            ) : null
-                        }
-
+                      <button
+                        className="btn btn-outline-light btn-lg px-5"
+                        type="submit"
+                      >
+                        Ingresar
+                      </button>
+                      {errorMensaje ? (
+                        <p className="alert alert-danger">{errorMensaje}</p>
+                      ) : null}
                     </form>
                     {userAmin ? null : (
                       <div>

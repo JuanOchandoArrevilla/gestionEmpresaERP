@@ -67,8 +67,7 @@ const Reserva = () => {
                 
                 resetForm();
                 console.log(JSON.stringify(valores));
-                console.log("Formulario enviado");
-
+                
                 setEnviarFormulario(true);
                 setTimeout(() =>  setEnviarFormulario(false), 3000);
               }}
