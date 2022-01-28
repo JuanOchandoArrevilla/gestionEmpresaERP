@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {listDisponible} from "../Services/services"
 
-const ListaDisponible = () => {
+const ListaDisponible = ({numeroPropiedad, obtenerPrecio}) => {
    
   const [fechas, setFechas] = useState({
     Fecha_Entrada: "",
@@ -12,7 +12,7 @@ const ListaDisponible = () => {
    const consultaDisponibles = async(entrada, salida) => {
     const viviendas = await listDisponible(entrada,salida);
      setViviendasDisponibles(viviendas);
-   
+     
    }
 
   const handleChange = (e) => {
@@ -29,13 +29,13 @@ const ListaDisponible = () => {
   const handleSubmit = (e) => {
     e.preventDefault();   
     consultaDisponibles(fechas.Fecha_Entrada, fechas.Fecha_Salida);
-    
+    numeroPropiedad(viviendasDisponibles);
   };
 
   return (
     <>
       <form className="formDisponible" onSubmit={handleSubmit}>
-        <label>Buscar Fecha Disponibles:</label>
+        <h1>Buscar Fecha Disponibles:</h1>
         <br />
         <label>fecha entrada:</label>
         <input
@@ -89,7 +89,7 @@ const ListaDisponible = () => {
                     <td>{item.Num_Personas}</td>
                     <td>{item.Baños}</td>
                     <td>{item.Tamaño_MTS}</td>
-                    <td>{`${item.Precio_Noche} €`} </td>
+                    <td>{`${item.Precio_Noche} €`} <button onClick={() => obtenerPrecio(item.Precio_Noche)}>ca</button> </td>
                   </tr>
                 );
               })}
@@ -97,8 +97,7 @@ const ListaDisponible = () => {
           </table>
         </div>
       </div>
-      
-      
+       
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
-const Reserva = () => {
+const Reserva = ({numPropiedad = []}) => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
   return (
     <> 
@@ -63,8 +63,7 @@ const Reserva = () => {
 
                 return errores;
               }}
-              onSubmit={(valores, { resetForm }) => {
-                
+              onSubmit={(valores, { resetForm }) => {   
                 resetForm();
                 console.log(JSON.stringify(valores));
                 
@@ -179,7 +178,7 @@ const Reserva = () => {
                       className="form-control"
                       id="Precio_Total"
                       name="Precio_Total"
-                      placeholder="cantidad de € a pagar "
+                    
                     />
                     <ErrorMessage
                       name="Precio_Total"
@@ -190,13 +189,13 @@ const Reserva = () => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label colorLetras">numero de Vivienda:</label>
-                    <Field
-                      type="number"
-                      className="form-control"
-                      id="Num_Propiedad_Vivienda"
-                      name="Num_Propiedad_Vivienda"
-                      placeholder="codigo de Num_Propiedad_Vivienda"
-                    />
+                    <Field  className="form-control" name="Num_Propiedad_Vivienda" as="select" >
+                      {numPropiedad.map((item) => (
+                        <option key={item.Num_propiedad} value={item.Num_propiedad}>{item.Num_propiedad}</option> 
+                      ))}
+                         
+                      
+                   </Field>
                     <ErrorMessage
                       name="Num_Propiedad_Vivienda"
                       component={() => (

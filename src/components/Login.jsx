@@ -8,7 +8,7 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+  
     setUsuario((data) => ({
       ...data,
       [name]: value,
