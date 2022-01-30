@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {listDisponible} from "../Services/services"
 
-const ListaDisponible = ({numeroPropiedad, obtenerPrecio}) => {
+const ListaDisponible = ({numeroPropiedad}) => {
    
   const [fechas, setFechas] = useState({
     Fecha_Entrada: "",
@@ -89,7 +89,7 @@ const ListaDisponible = ({numeroPropiedad, obtenerPrecio}) => {
                     <td>{item.Num_Personas}</td>
                     <td>{item.Baños}</td>
                     <td>{item.Tamaño_MTS}</td>
-                    <td>{`${item.Precio_Noche} €`} <button onClick={() => obtenerPrecio(item.Precio_Noche)}>ca</button> </td>
+                    <td>{`${item.Precio_Noche} €`}  </td>
                   </tr>
                 );
               })}
