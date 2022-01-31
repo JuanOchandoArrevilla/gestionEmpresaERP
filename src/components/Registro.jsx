@@ -32,17 +32,21 @@ const Registro = ({ show, onHide , insertarUser}) => {
                 initialValues={{
                   usuario: "",
                   password: "",
-                  roles: "administrador",
+                  roles: "",
                 }}
                 validate={(valores) => {
                   let errores = {};
 
                   if (!valores.usuario) {
                     errores.usuario = "por favor ingrese un valor";
+                  }else if (!/^\w{6,10}$/.test(valores.usuario)) {
+                    errores.usuario = "error usuario requieres 6-10 caracteres sin caracter especial";
                   }
 
                   if (!valores.password) {
                     errores.password = "por favor ingrese un valor";
+                  }else if (!/^\w{8,15}$/.test(valores.password)) {
+                    errores.password = "8-15 caracteres sin caracter especial";
                   }
                   if (!valores.roles) {
                     errores.roles = "por favor ingrese un valor";
@@ -101,23 +105,24 @@ const Registro = ({ show, onHide , insertarUser}) => {
                     </div>
 
                     <div className="mb-3">
-                      <div>roles:</div>
-                      <Field
-                        type="text"
-                        className="form-control"
-                        id="roles"
-                        name="roles"
-                        placeholder=""
-                      />
-                      <ErrorMessage
-                        name="roles"
-                        component={() => (
-                          <div className="colorLetrasErroes">
-                            {errors.roles}
-                          </div>
-                        )}
-                      />
-                    </div>
+                    <div>rol por defecto administrador</div>
+                    <Field  className="form-control" name="roles" as="select" >
+                     
+                        <option  value="">""</option> 
+                        <option value="administrador">administrador </option>
+                    
+                         
+                      
+                   </Field>
+                    <ErrorMessage
+                      name="Num_Propiedad_Vivienda"
+                      component={() => (
+                        <div className="colorLetrasErroes">
+                          {errors.Num_Propiedad_Vivienda}
+                        </div>
+                      )}
+                    />
+                  </div>
 
                     <div>
                       {" "}

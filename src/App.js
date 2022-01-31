@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import swal from 'sweetalert';
 import PaginaLogin from "./pages/PaginaLogin";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -20,7 +20,7 @@ function App() {
   const [iniciarSesion, setIniciarSesion] = useState(false);
   const [usersDB, setUsersDB] = useState([]);
   const [iniciarUsuario, setIniciarUsuario] = useState(false);
-  const [errorMensaje, setErrorMensaje] = useState("");
+  
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
   
@@ -69,7 +69,13 @@ function App() {
 
 
    const comprobarUsuario = (datos) => {
-
+    if (usersDB.length === 0) {
+      swal({
+        text: 'no esta creado el usuario administrador',
+        icon: 'error',
+        timer: 3000
+      })
+    }
     usersDB.map((user) => {
 
       if ((user.usuario === datos.user) && (user.password === datos.password) && (user.roles === "administrador")) {
@@ -78,7 +84,12 @@ function App() {
         setRolDB(user.roles);
         setIniciarUsuario(true);
       } else {
-        setErrorMensaje("usuario o contraseña son incorrectas");
+      
+        swal({
+          text: 'usuario o contraseña incorrecta',
+        icon: 'error',
+        timer: 1000
+        })
       }
 
     })
@@ -91,7 +102,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarUsuario rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario} errorMensaje={errorMensaje} /> }
+      { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarUsuario rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario}  /> }
       { iniciarSesion || iniciarUsuario ? 
         <Routes>  
           <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
