@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-
-const Viendas = ({insertVivienda}) => {
+const Viendas = ({ insertVivienda }) => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
 
   return (
@@ -33,25 +32,29 @@ const Viendas = ({insertVivienda}) => {
                 if (!valores.Provincia) {
                   errores.Provincia = "por favor ingrese un valor";
                 } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Provincia)) {
-                  errores.Provincia = "por favor ingrese una provincia correcto";
+                  errores.Provincia =
+                    "por favor ingrese una provincia correcto";
                 }
 
                 if (!valores.Municipio) {
                   errores.Municipio = "por favor ingrese un valor";
-                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Municipio)) {
-                  errores.Municipio = "por favor ingrese una Municipio correcto";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Municipio)) {
+                  errores.Municipio =
+                    "por favor ingrese una Municipio correcto";
                 }
 
                 if (!valores.Direccion) {
                   errores.Direccion = "por favor ingrese una Direccion";
-                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Direccion)) {
-                  errores.Direccion = "por favor ingrese una Direccion correcto";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Direccion)) {
+                  errores.Direccion =
+                    "por favor ingrese una Direccion correcto";
                 }
 
                 if (!valores.Localidad) {
                   errores.Localidad = "por favor ingrese una Localidad";
-                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Localidad)) {
-                  errores.Localidad = "por favor ingrese una Localidad correcto";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Localidad)) {
+                  errores.Localidad =
+                    "por favor ingrese una Localidad correcto";
                 }
                 if (!valores.Num_Habitacion) {
                   errores.Num_Habitacion =
@@ -77,9 +80,9 @@ const Viendas = ({insertVivienda}) => {
               }}
               onSubmit={(valores, { resetForm }) => {
                 resetForm();
-                
+
                 insertVivienda(valores);
-               
+
                 setEnviarFormulario(true);
                 setTimeout(() => setEnviarFormulario(false), 3000);
               }}
@@ -167,7 +170,7 @@ const Viendas = ({insertVivienda}) => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label colorLetras">Dirreccion</label>
+                    <label className="form-label colorLetras">Direccion</label>
                     <Field
                       type="text"
                       className="form-control"
