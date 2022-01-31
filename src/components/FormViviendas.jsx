@@ -17,9 +17,8 @@ const Viendas = ({insertVivienda}) => {
                 Provincia: "",
                 Municipio: "",
                 Localidad: "",
-                Dirrecion: "",
+                Direccion: "",
                 Num_Habitacion: "",
-                Num_Personas: "",
                 Baños: "",
                 Tamaño_MTS: "",
                 Precio_Noche: "",
@@ -43,10 +42,10 @@ const Viendas = ({insertVivienda}) => {
                   errores.Municipio = "por favor ingrese una Municipio correcto";
                 }
 
-                if (!valores.Dirrecion) {
-                  errores.Dirrecion = "por favor ingrese una Dirrecion";
-                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Dirrecion)) {
-                  errores.Dirrecion = "por favor ingrese una Dirrecion correcto";
+                if (!valores.Direccion) {
+                  errores.Direccion = "por favor ingrese una Direccion";
+                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Direccion)) {
+                  errores.Direccion = "por favor ingrese una Direccion correcto";
                 }
 
                 if (!valores.Localidad) {
@@ -59,10 +58,6 @@ const Viendas = ({insertVivienda}) => {
                     "por favor ingrese numeros de Num_Habitaciones";
                 }
 
-                if (!valores.Num_Personas) {
-                  errores.Num_Personas =
-                    "por favor ingrese numeros de Num_Personas";
-                }
                 if (!valores.Baños) {
                   errores.Baños =
                     "por favor ingrese la cantida de Baños de la vivienda";
@@ -176,16 +171,16 @@ const Viendas = ({insertVivienda}) => {
                     <Field
                       type="text"
                       className="form-control"
-                      id="Dirrecion"
-                      name="Dirrecion"
+                      id="Direccion"
+                      name="Direccion"
                       placeholder="Calle rosa de caleya"
                     />
                     <ErrorMessage
-                      name="Dirrecion"
+                      name="Direccion"
                       component={() => (
                         <div className="colorLetrasErroes">
                           {" "}
-                          {errors.Dirrecion}{" "}
+                          {errors.Direccion}{" "}
                         </div>
                       )}
                     />
@@ -207,27 +202,6 @@ const Viendas = ({insertVivienda}) => {
                       component={() => (
                         <div className="colorLetrasErroes">
                           {errors.Num_Habitacion}
-                        </div>
-                      )}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <label className="form-label colorLetras">
-                      Nº Num_Personas:
-                    </label>
-                    <Field
-                      type="number"
-                      className="form-control"
-                      id="Num_Personas"
-                      name="Num_Personas"
-                      placeholder="numeros de Num_Personas"
-                    />
-                    <ErrorMessage
-                      name="Num_Personas"
-                      component={() => (
-                        <div className="colorLetrasErroes">
-                          {errors.Num_Personas}
                         </div>
                       )}
                     />
