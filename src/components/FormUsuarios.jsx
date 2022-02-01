@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import swal from 'sweetalert';
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const FormUsuarios = ({ insertarUser }) => {
-  // const [enviarFormulario, setEnviarFormulario] = useState(false);  
+  
+
+
+ 
   return (
     <>
     <h1 className="tituloListUsuario" >Alta Usuarios</h1>
@@ -157,6 +160,7 @@ const FormUsuarios = ({ insertarUser }) => {
 
                     <button className="btn btn-primary formUsuarioBoton" type="submit" >
                       Guardar Usuario
+                      
                     </button>
                    
                   </Form>

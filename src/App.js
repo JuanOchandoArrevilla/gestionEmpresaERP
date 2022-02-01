@@ -20,7 +20,9 @@ function App() {
   const [iniciarSesion, setIniciarSesion] = useState(false);
   const [usersDB, setUsersDB] = useState([]);
   const [iniciarUsuario, setIniciarUsuario] = useState(false);
-  
+  const [updateVivienda, setUpdateVivienda] = useState(false);
+  const [updateUser, setUpdateUser] = useState(false);
+  // const [updateReserva, setUpdateReserva] = useState(false);
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
   
@@ -32,8 +34,8 @@ function App() {
           .then((res) => {   
              setUsersDB(res.data);  
           });   
-        
-  }, [usersDB])
+          setUpdateUser(false);
+  }, [updateUser])
 
   
 
@@ -45,7 +47,8 @@ function App() {
         .catch((error) => {
         console.log(error);
          });
-   }, [viviendas]);
+         setUpdateVivienda(false);
+   }, [updateVivienda]);
 
    useEffect(() => {
     allReservas()
@@ -60,11 +63,14 @@ function App() {
   
    const insertVivienda = (datos) => {
       crearViviendas(datos,setViviendas,viviendas);
+      setUpdateVivienda(true);
+      
    }
 
   
    const insertarUser = (datos) => {
     crearUsuario(datos,setUsersDB, usersDB)
+    setUpdateUser(true);
    }
 
 
@@ -83,7 +89,7 @@ function App() {
       } else if ((user.usuario === datos.user) && (user.password === datos.password)) {
         setRolDB(user.roles);
         setIniciarUsuario(true);
-      } else {
+      } else if ((user.usuario !== datos.user) && (user.password !== datos.password)) {
       
         swal({
           text: 'usuario o contraseña incorrecta',

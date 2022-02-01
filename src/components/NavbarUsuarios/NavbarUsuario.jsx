@@ -24,8 +24,8 @@ const NavbarUsuario = ({ rolDB = [] }) => {
               
               {modulos.map((item) => (
                
-              <li className="nav-item">
-              <NavLink className="nav-link" to={`/listado${item}`}>
+              <li key={item} className="nav-item" >
+              <NavLink  className="nav-link" to={`/listado${item}`}>
                {item}
               </NavLink>
             </li>
