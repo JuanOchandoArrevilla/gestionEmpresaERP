@@ -3,7 +3,7 @@ import "./css/PageReserva.css";
 import FormReserva from "../components/FormReserva";
 import ListaDisponible from "../components/ListaDisponible";
 
-const PaginaReserva = () => {
+const PaginaReserva = ({insertarReserva}) => {
   const [numPropiedad, setNumeroPropiedad] = useState([]);
 
   const numeroPropiedad = (num) => {
@@ -12,7 +12,7 @@ const PaginaReserva = () => {
 
   return (
     <>
-      <FormReserva numPropiedad={numPropiedad} />
+      <FormReserva insertarReserva={insertarReserva} numPropiedad={numPropiedad} />
       <ListaDisponible numeroPropiedad={numeroPropiedad} />
     </>
   );

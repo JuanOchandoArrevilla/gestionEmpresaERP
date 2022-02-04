@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
-const Reserva = ({numPropiedad = []}) => {
+const Reserva = ({numPropiedad = [], insertarReserva}) => {
   const [enviarFormulario, setEnviarFormulario] = useState(false);
   return (
     <> 
@@ -66,7 +66,7 @@ const Reserva = ({numPropiedad = []}) => {
               onSubmit={(valores, { resetForm }) => {   
                 resetForm();
                 console.log(JSON.stringify(valores));
-                
+                insertarReserva(valores)
                 setEnviarFormulario(true);
                 setTimeout(() =>  setEnviarFormulario(false), 3000);
               }}

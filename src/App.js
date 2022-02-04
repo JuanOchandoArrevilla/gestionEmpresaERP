@@ -9,10 +9,13 @@ import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
 import PaginaListUsuarios from "./pages/PaginaListUsuarios";
-import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas } from "./Services/services";
+import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, crearReserva, 
+  allLimpieza, crearLimpieza } from "./Services/services";
 import NavbarReservas from "./components/NavbarUsuarios/NavbarReservas";
 import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
 import PaginaListReservas from "./pages/PaginaListReservas";
+import PaginaLimpieza from "./pages/PaginaLimpieza";
+
 
 function App() {
 
@@ -22,10 +25,10 @@ function App() {
   const [iniciarUsuario, setIniciarUsuario] = useState(false);
   const [updateVivienda, setUpdateVivienda] = useState(false);
   const [updateUser, setUpdateUser] = useState(false);
-  // const [updateReserva, setUpdateReserva] = useState(false);
+  const [updateReserva, setUpdateReserva] = useState(false);
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
-  
+  const [limpieza, setLimpieza] = useState([]);
 
   
 
@@ -48,7 +51,7 @@ function App() {
         console.log(error);
          });
          setUpdateVivienda(false);
-         console.log("es vivienda");
+        
    }, [updateVivienda]);
 
    useEffect(() => {
@@ -58,9 +61,26 @@ function App() {
       }).catch((error) => {
         console.log(error);
          });
-   }, [reservas]);
+         setUpdateReserva(false);
+   }, [updateReserva]);
 
-  
+   
+   useEffect(() => {
+    allLimpieza()
+      .then((res) => {
+        setLimpieza(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+   }, [limpieza]);
+
+
+
+   const insertarReserva = (datos) => {
+    crearReserva(datos,setReservas,reservas);
+    setUpdateReserva(true);
+    
+   }
   
    const insertVivienda = (datos) => {
       crearViviendas(datos,setViviendas,viviendas);
@@ -72,6 +92,10 @@ function App() {
    const insertarUser = (datos) => {
     crearUsuario(datos,setUsersDB, usersDB)
     setUpdateUser(true);
+   }
+
+   const insertarLimpieza = (datos) => {
+    crearLimpieza(datos, setLimpieza,limpieza);
    }
 
 
@@ -104,7 +128,6 @@ function App() {
    }
    
    
-   
 
   return (
     <>
@@ -112,12 +135,13 @@ function App() {
       { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarUsuario rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario}  /> }
       { iniciarSesion || iniciarUsuario ? 
         <Routes>  
-          <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
-          <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
-          <Route path="/Reservas" element={<PaginaReserva  />  } />
-          <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
           <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
           <Route path="/ListaUsuarios" element={ <PaginaListUsuarios usersDB={usersDB} />} />
+          <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
+          <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
+          <Route path="/Reservas" element={<PaginaReserva insertarReserva={insertarReserva}  />  } />
+          <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
+          <Route path="/MantenimientoLimpieza" element={ <PaginaLimpieza viviendas={viviendas} insertarLimpieza={insertarLimpieza}/>} />
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
           
           <Route path="/listadoViviendas" element={ <NavbarViviendas />} />

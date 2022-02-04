@@ -1,0 +1,15 @@
+
+.listViviendas{
+    position: absolute;
+    bottom: 800px;
+    left:800px;
+    width: 86%;
+    
+}
+
+.formLimpieza {
+    position: absolute;
+    left:40px;
+    width: 100%;
+
+}

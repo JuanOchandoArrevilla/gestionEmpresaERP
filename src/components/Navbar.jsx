@@ -81,11 +81,7 @@ const Navbar = () => {
                     Lista de Viviendas
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                   no sabemos
-                  </NavLink>
-                </li>
+                
               </ul>
             </li>
 
@@ -99,7 +95,7 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Reserva
+                Reservas
               </NavLink>
               <ul
                 className="dropdown-menu"
@@ -124,11 +120,42 @@ const Navbar = () => {
             </li>
             
 
-            <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="#">
+
+            <li className="nav-item dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Mantenimiento y limpieza
               </NavLink>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/MantenimientoLimpieza">
+                    Informar Mantenimiento o Limpieza
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/ListaViviendas">
+                    Lista de Mantenimiento o Limpieza
+                  </NavLink>
+                </li>
+                
+              </ul>
             </li>
+
+
+
+
+
+
+
 
             <li className="nav-item">
               <NavLink className="nav-link" to="#">

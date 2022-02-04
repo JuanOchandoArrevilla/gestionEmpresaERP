@@ -48,5 +48,30 @@ const deleteUser = (id) => {
 }
 
 
+const crearReserva = (datos, set, arra) => {
+  return axios
+    .post("http://localhost:8000/api/v1/reservacion",datos)
+    .then((res) => {
+      return set(arra.push(res.data));
+    })
+}
 
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser };
+const allLimpieza = () => {
+  return axios
+    .get('http://localhost:8000/api/v1/allLimpieza')
+    .then((res) => res.data);
+}
+
+const crearLimpieza = (datos,set,arr) => {
+  return axios
+    .post("http://localhost:8000/api/v1/limpieza",datos)
+    .then((res) => {
+      return set(arr.push(res.data));
+    })
+}
+
+
+
+
+
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearLimpieza,allLimpieza,crearReserva };
