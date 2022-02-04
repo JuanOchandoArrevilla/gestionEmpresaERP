@@ -18,7 +18,6 @@ const ListaViviendas = ({viviendas = []}) => {
                 <th scope="col">Localidad</th>
                 <th scope="col">Dirrecion</th>
                 <th scope="col">Nº Habitaciones</th>
-                <th scope="col">Nº Personas</th>
                 <th scope="col">Baños</th>
                 <th scope="col">Tamaño MTS</th>
                 <th scope="col">Precio/Noche €</th>
@@ -33,9 +32,8 @@ const ListaViviendas = ({viviendas = []}) => {
                     <td>{item.Provincia}</td>
                     <td>{item.Municipio}</td>
                     <td>{item.Localidad}</td>
-                    <td>{item.Dirrecion}</td>  
+                    <td>{item.Direccion}</td>  
                     <td>{item.Num_Habitacion}</td>
-                    <td>{item.Num_Personas}</td>
                     <td>{item.Baños}</td>
                     <td>{item.Tamaño_MTS}</td>
                     <td>{`${item.Precio_Noche} €`} </td>

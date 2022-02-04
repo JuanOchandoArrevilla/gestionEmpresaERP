@@ -48,6 +48,7 @@ function App() {
         console.log(error);
          });
          setUpdateVivienda(false);
+         console.log("es vivienda");
    }, [updateVivienda]);
 
    useEffect(() => {
