@@ -132,7 +132,7 @@ const FormUsuarios = ({ insertarUser }) => {
                           className="cuadroField"
                           type="checkbox"
                           name="roles"
-                          value="Mantenimiento y Limpieza"
+                          value="Mantenimientos"
                         />
                         gestion de Mantenimiento y Limpieza
                       </label>

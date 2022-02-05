@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
 
-const FormLimpieza = ({viviendas, insertarLimpieza}) => {
+const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
 
   return ( 
   
@@ -55,7 +55,7 @@ const FormLimpieza = ({viviendas, insertarLimpieza}) => {
               onSubmit={(valores, { resetForm }) => {
                 resetForm();  
                 console.log(JSON.stringify(valores));
-                insertarLimpieza(valores)
+                insertarMantenimiento(valores)
                
               }}
             >
@@ -173,4 +173,4 @@ const FormLimpieza = ({viviendas, insertarLimpieza}) => {
   </>);
 };
 
-export default FormLimpieza;
+export default FormMantenimientos;

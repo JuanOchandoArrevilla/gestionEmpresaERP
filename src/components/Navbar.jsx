@@ -130,19 +130,19 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Mantenimiento y limpieza
+                Mantenimientos
               </NavLink>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <NavLink className="dropdown-item" to="/MantenimientoLimpieza">
+                  <NavLink className="dropdown-item" to="/Mantenimientos">
                     Informar Mantenimiento o Limpieza
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/ListaViviendas">
+                  <NavLink className="dropdown-item" to="/ListaMantenimientos">
                     Lista de Mantenimiento o Limpieza
                   </NavLink>
                 </li>

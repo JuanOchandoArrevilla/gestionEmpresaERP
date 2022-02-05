@@ -1,0 +1,13 @@
+.listMantenimiento {
+    position: absolute;
+    left:1%;
+    width: 50%;
+    text-align: center;
+}
+
+.scroll {
+    overflow: auto;
+    height: 90vh;
+  }
+
+ 

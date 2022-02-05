@@ -56,15 +56,15 @@ const crearReserva = (datos, set, arra) => {
     })
 }
 
-const allLimpieza = () => {
+const allMantemientos = () => {
   return axios
-    .get('http://localhost:8000/api/v1/allLimpieza')
+    .get('http://localhost:8000/api/v1/allMantenimientos')
     .then((res) => res.data);
 }
 
-const crearLimpieza = (datos,set,arr) => {
+const crearMantenimiento = (datos,set,arr) => {
   return axios
-    .post("http://localhost:8000/api/v1/limpieza",datos)
+    .post("http://localhost:8000/api/v1/matenimiento",datos)
     .then((res) => {
       return set(arr.push(res.data));
     })
@@ -74,4 +74,4 @@ const crearLimpieza = (datos,set,arr) => {
 
 
 
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearLimpieza,allLimpieza,crearReserva };
+module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };

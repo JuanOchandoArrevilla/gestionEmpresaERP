@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const NavbarUsuario = ({ rolDB = [] }) => {
   let modulos = [rolDB];
   modulos = rolDB.split(",");
+  
   const navigate = useNavigate();
     
   const handleClick = () => {

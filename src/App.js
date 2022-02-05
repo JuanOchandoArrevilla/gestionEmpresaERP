@@ -10,12 +10,13 @@ import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
 import PaginaListUsuarios from "./pages/PaginaListUsuarios";
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, crearReserva, 
-  allLimpieza, crearLimpieza } from "./Services/services";
+  allMantemientos, crearMantenimiento } from "./Services/services";
 import NavbarReservas from "./components/NavbarUsuarios/NavbarReservas";
 import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
+import NavbarMantemiento from "./components/NavbarUsuarios/NavbarMantemiento";
 import PaginaListReservas from "./pages/PaginaListReservas";
-import PaginaLimpieza from "./pages/PaginaLimpieza";
-
+import PaginaMantenimiento from "./pages/PaginaMantenimiento";
+import PaginaListMantenimiento from "./pages/PaginaListMantenimiento";
 
 function App() {
 
@@ -26,9 +27,10 @@ function App() {
   const [updateVivienda, setUpdateVivienda] = useState(false);
   const [updateUser, setUpdateUser] = useState(false);
   const [updateReserva, setUpdateReserva] = useState(false);
+  const [updateMantenimiento, setUpdateMantenimiento] = useState(false);
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
-  const [limpieza, setLimpieza] = useState([]);
+  const [mantenimiento, setMantenimiento] = useState([]);
 
   
 
@@ -66,13 +68,14 @@ function App() {
 
    
    useEffect(() => {
-    allLimpieza()
+    allMantemientos()
       .then((res) => {
-        setLimpieza(res.data);
+        setMantenimiento(res.data);
       }).catch((err) => {
         console.log(err);
-      })
-   }, [limpieza]);
+      });
+      setUpdateMantenimiento(false);
+   }, [updateMantenimiento]);
 
 
 
@@ -94,8 +97,9 @@ function App() {
     setUpdateUser(true);
    }
 
-   const insertarLimpieza = (datos) => {
-    crearLimpieza(datos, setLimpieza,limpieza);
+   const insertarMantenimiento = (datos) => {
+    crearMantenimiento(datos, setMantenimiento,mantenimiento);
+    setUpdateMantenimiento(true);
    }
 
 
@@ -141,11 +145,13 @@ function App() {
           <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
           <Route path="/Reservas" element={<PaginaReserva insertarReserva={insertarReserva}  />  } />
           <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
-          <Route path="/MantenimientoLimpieza" element={ <PaginaLimpieza viviendas={viviendas} insertarLimpieza={insertarLimpieza}/>} />
+          <Route path="/Mantenimientos" element={ <PaginaMantenimiento viviendas={viviendas} insertarMantenimiento={insertarMantenimiento}/>} />
+          <Route path="/ListaMantenimientos" element={ <PaginaListMantenimiento mantenimiento={mantenimiento}/>} />
+
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
           
           <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
-          
+          <Route path="/listadoMantenimientos" element={ <NavbarMantemiento />} /> 
         </Routes> : null
       }
       </BrowserRouter>

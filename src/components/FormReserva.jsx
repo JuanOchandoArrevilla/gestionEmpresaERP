@@ -189,7 +189,7 @@ const Reserva = ({numPropiedad = [], insertarReserva}) => {
                   </div>
                   <div className="mb-3">
                     <label className="form-label colorLetras">numero de Vivienda:</label>
-                    <Field  className="form-control" name="Num_Propiedad_Vivienda" as="select" >
+                    <Field  className="form-control" type="number" name="Num_Propiedad_Vivienda" as="select" >
                       {numPropiedad.map((item) => (
                         <option key={item.Num_propiedad} value={item.Num_propiedad}>{item.Num_propiedad}</option> 
                       ))}
