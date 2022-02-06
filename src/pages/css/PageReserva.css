@@ -30,6 +30,14 @@
   .tituloListVivienda {
     text-align: center;
   }
+
+  .listReserva {
+    position: absolute;
+    left: 1%;
+    width: 60%;
+    text-align: center;
+
+  }
   
   .scrollDisponible {
     overflow: auto;

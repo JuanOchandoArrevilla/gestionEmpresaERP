@@ -8,21 +8,13 @@ const PaginaListMantenimiento = () => {
   const [dataMantenimiento, setDataMantenimiento] = useState([]);
 
   useEffect (() => {
-   
 
-    
       listaDataMantenimiento()
       .then((res) => {
         setDataMantenimiento(res.data);
       });
    
-  
-  
-   
-
   }, [])
-
-
 
 
   return (

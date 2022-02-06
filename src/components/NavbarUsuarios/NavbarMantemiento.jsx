@@ -13,7 +13,7 @@ const NavbarLimpieza = () => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Mantenimientos">
-                Informar Mantenimiento o Limpieza
+                Informe Mantenimiento o Limpieza
                 </NavLink>
               </li>
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ListaReservas = ({reservas = []}) => {
+const ListaReservas = ({dataReserva = []}) => {
   return (
   <>
-    <div className="tamañoListVivienda tituloListVivienda">
+    <div className="listReserva">
         <h1>Listado de reservas</h1>
         
         <div className="scroll">
@@ -17,12 +17,14 @@ const ListaReservas = ({reservas = []}) => {
                 <th scope="col">Telefono</th>
                 <th scope="col">Email</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Numero de propiedad</th>
-                
+                <th scope="col">Provincia</th>
+                <th scope="col">Municipio</th>
+                <th scope="col">Localidad</th>
+                <th scope="col">Direccion</th>
               </tr>
             </thead>
             <tbody>
-              {reservas.map((item) => {
+              {dataReserva.map((item) => {
                   
                   item.Fecha_Entrada = item.Fecha_Entrada.substring(0,10);
                   item.Fecha_Salida = item.Fecha_Salida.substring(0,10);
@@ -36,8 +38,10 @@ const ListaReservas = ({reservas = []}) => {
                     <td>{item.Telefono}</td>  
                     <td>{item.Email}</td>
                     <td>{`${item.Precio_Total} €`}</td>
-                    <td>{item.Num_propiedad_Vivienda}</td>
-                   
+                    <td>{item.Provincia}</td>
+                    <td>{item.Municipio}</td>
+                    <td>{item.Localidad}</td>
+                    <td>{item.Direccion}</td>
                   </tr>
                 );
               })}

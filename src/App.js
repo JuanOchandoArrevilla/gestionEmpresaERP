@@ -3,20 +3,24 @@ import swal from 'sweetalert';
 import PaginaLogin from "./pages/PaginaLogin";
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import NavbarUsuario from "./components/NavbarUsuarios/NavbarUsuario"
+import NavbarModulos from "./components/NavbarUsuarios/NavbarModulos"
 import PaginaViviendas from "./pages/PaginaViviendas";
 import PaginaReserva from "./pages/PaginaReserva";
 import PaginaListViviendas from "./pages/PaginaListViviendas";
 import PaginaUsuarios from "./pages/paginaUsuarios"
 import PaginaListUsuarios from "./pages/PaginaListUsuarios";
 import { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, crearReserva, 
-  allMantemientos, crearMantenimiento } from "./Services/services";
+  allMantemientos, crearMantenimiento, allGastos, crearGastos } from "./Services/services";
 import NavbarReservas from "./components/NavbarUsuarios/NavbarReservas";
 import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
 import NavbarMantemiento from "./components/NavbarUsuarios/NavbarMantemiento";
+import NavbarUsuario from "./components/NavbarUsuarios/NavbarUsuario";
+import NavbarGastos from "./components/NavbarUsuarios/NavbarGastos";
 import PaginaListReservas from "./pages/PaginaListReservas";
 import PaginaMantenimiento from "./pages/PaginaMantenimiento";
 import PaginaListMantenimiento from "./pages/PaginaListMantenimiento";
+import PaginaGastos from "./pages/PaginaGastos";
+import PaginaListGastos from "./pages/PaginaListGastos";
 
 function App() {
 
@@ -28,10 +32,11 @@ function App() {
   const [updateUser, setUpdateUser] = useState(false);
   const [updateReserva, setUpdateReserva] = useState(false);
   const [updateMantenimiento, setUpdateMantenimiento] = useState(false);
+  const [updateGastos, setUpdateGastos] = useState(false);
   const [rolDB, setRolDB] = useState([]);
   const [reservas, setReservas] = useState([]);
   const [mantenimiento, setMantenimiento] = useState([]);
-
+  const [gastos, setGastos] = useState([]);
   
 
   useEffect(() => {  
@@ -77,7 +82,13 @@ function App() {
       setUpdateMantenimiento(false);
    }, [updateMantenimiento]);
 
-
+   useEffect(() => {
+    allGastos()
+      .then((res) => {
+        setGastos(res.data);
+      });
+      setUpdateGastos(false);
+   },[updateGastos]);
 
    const insertarReserva = (datos) => {
     crearReserva(datos,setReservas,reservas);
@@ -102,6 +113,10 @@ function App() {
     setUpdateMantenimiento(true);
    }
 
+   const insertarGastos = (datos) => {
+    crearGastos(datos,setGastos,gastos);
+    setUpdateGastos(true)
+   }
 
    const comprobarUsuario = (datos) => {
     if (usersDB.length === 0) {
@@ -136,7 +151,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarUsuario rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario}  /> }
+      { iniciarSesion ? <Navbar  /> : iniciarUsuario ?  <NavbarModulos rolDB={rolDB} /> : <PaginaLogin usersDB={usersDB} insertarUser={insertarUser} setIniciarSesion={setIniciarSesion} setIniciarUsuario={setIniciarUsuario} comprobarUsuario={comprobarUsuario}  /> }
       { iniciarSesion || iniciarUsuario ? 
         <Routes>  
           <Route path="/Usuario" element={ <PaginaUsuarios insertarUser={insertarUser} usersDB={usersDB}/>} />
@@ -144,14 +159,17 @@ function App() {
           <Route path="/Viviendas" element={<PaginaViviendas insertVivienda={insertVivienda} />  }/>
           <Route path="/ListaViviendas" element={ <PaginaListViviendas viviendas={viviendas} />  } />
           <Route path="/Reservas" element={<PaginaReserva insertarReserva={insertarReserva}  />  } />
-          <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
+          <Route path="/ListaReservas" element={ <PaginaListReservas  />} />
           <Route path="/Mantenimientos" element={ <PaginaMantenimiento viviendas={viviendas} insertarMantenimiento={insertarMantenimiento}/>} />
           <Route path="/ListaMantenimientos" element={ <PaginaListMantenimiento />} />
+          <Route path="/Gastos" element={ <PaginaGastos viviendas={viviendas} insertarGastos={insertarGastos}/>} />
+          <Route path="/ListaGastos" element={ <PaginaListGastos />} />
 
+          <Route path="/listadoUsuarios" element={ <NavbarUsuario />} />
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
-          
           <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
           <Route path="/listadoMantenimientos" element={ <NavbarMantemiento />} /> 
+          <Route path="/listadoGastos" element={ <NavbarGastos />} />
         </Routes> : null
       }
       </BrowserRouter>

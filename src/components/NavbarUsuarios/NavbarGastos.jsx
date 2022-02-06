@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
-const NavbarUsuario = () => {
+const NavbarGastos = () => {
   return (
+  
   <>
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -12,14 +13,14 @@ const NavbarUsuario = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/Usuario">
-                Crear Usuarios
+                <NavLink className="nav-link" to="/Gastos">
+                Informe de Gastos o Facturas 
                 </NavLink>
               </li>
 
               <li className="nav-item">
-                <NavLink className="nav-link" to="/ListaUsuarios">
-                Lista de Usuarios
+                <NavLink className="nav-link" to="/ListaGastos">
+                Lista Gastos o Facturas 
                 </NavLink>
               </li>
             
@@ -28,8 +29,7 @@ const NavbarUsuario = () => {
         </div>
       </nav>
   
-  
   </>);
 };
 
-export default NavbarUsuario;
+export default NavbarGastos;

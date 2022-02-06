@@ -2,11 +2,8 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
-
-const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
-
-  return ( 
-  
+const FormGastos = ({viviendas = [], insertarGastos}) => {
+  return (
   <>
   <div className="formLimpieza">
       <h1>Infome de Mantenimiento y limpieza</h1>
@@ -16,9 +13,7 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
             <Formik
               initialValues={{
                 Tipo: "",
-                Nombre: "",
-                Fecha_Inicio: "",
-                Fecha_Terminada: "",
+                Fecha: "",
                 Pago: "",
                 Num_propiedad_Vivienda: "",
                
@@ -28,19 +23,12 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
 
                 if (!valores.Tipo) {
                   errores.Tipo = "por favor ingrese un valor";
+                }else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Tipo)) {
+                  errores.Tipo = "por favor ingrese una factura";
                 }
-
-                if (!valores.Nombre) {
-                  errores.Nombre = "por favor ingrese un valor";
-                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Nombre)) {
-                  errores.Nombre =
-                    "por favor ingrese una Nombre correcto";
-                }
-
-                
+              
                 if (!valores.Pago) {
-                  errores.Pago =
-                    "por favor ingrese numeros de Pagoes";
+                  errores.Pago = "por favor ingrese numeros de Pago";     
                 }
 
                 if (!valores.Num_propiedad_Vivienda ) {
@@ -48,81 +36,49 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
                 }
      
 
-               
-
                 return errores;
               }}
               onSubmit={(valores, { resetForm }) => {
                 resetForm();  
-                console.log(JSON.stringify(valores));
-                insertarMantenimiento(valores)
+                // console.log(JSON.stringify(valores));
+                insertarGastos(valores);
+                
                
               }}
             >
               {({ errors }) => (
                 <Form className="">
                   <div className="mb-3">
-                    <label className="form-label colorLetras">
-                     tipo 
-                    </label>
-                    <Field name="Tipo" as="select"> 
-                    
-                   <option value="limpieza" selected> Limpieza</option> 
-                   <option value="mantenimiento">Mantenimiento</option> 
-                    </Field>
-                    <ErrorMessage
-                      name="Tipo"
-                      component={() => (
-                        <div className="colorLetrasErroes">
-                          {" "}
-                          {errors.Tipo}{" "}
-                        </div>
-                      )}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <label className="form-label colorLetras">Nombre de Empresa o Empleado</label>
+                    <label className="form-label colorLetras">Tipo:</label>
                     <Field
                       type="text"
                       className="form-control"
-                      id="Nombre"
-                      name="Nombre"
-                
+                      id="Tipo"
+                      name="Tipo"
                     />
-                    <ErrorMessage
-                      name="Nombre"
+                   <ErrorMessage
+                      name="Tipo"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {" "}
-                          {errors.Nombre}{" "}
+                          {errors.Tipo}
                         </div>
                       )}
                     />
                   </div>
 
-
+                
                   <div className="mb-3">
-                    <label className="form-label colorLetras">Fecha_Inicio</label>
+                    <label className="form-label colorLetras">Fecha</label>
                     <Field
                       type="date"
                       className="form-control"
-                      id="Fecha_Inicio"
-                      name="Fecha_Inicio"    
+                      id="Fecha"
+                      name="Fecha"    
                     />
                    
                   </div>
 
-                  <div className="mb-3">
-                    <label className="form-label colorLetras">Fecha_Terminada</label>
-                    <Field
-                      type="date"
-                      className="form-control"
-                      id="Fecha_Terminada"
-                      name="Fecha_Terminada"
-                    />
-                   
-                  </div>
+               
 
                   <div className="mb-3">
                     <label className="form-label colorLetras">
@@ -148,7 +104,7 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
                   <div className="mb-3">
                     <label className="form-label colorLetras">numero de Vivienda:</label>
                     <Field  className="form-control" name="Num_propiedad_Vivienda" as="select" >
-                     <option  value=""></option> 
+                    <option  value=""></option> 
                       {viviendas.map((item) => (
                         <option key={item.Num_propiedad} value={item.Num_propiedad}>{item.Num_propiedad}</option> 
                       ))}
@@ -156,10 +112,10 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
                       
                    </Field>
                    <ErrorMessage
-                      name="Num_propiedad_Vivienda"
+                      name="Num_propiedad"
                       component={() => (
                         <div className="colorLetrasErroes">
-                          {errors.Num_propiedad_Vivienda}
+                          {errors.Num_propiedad}
                         </div>
                       )}
                     />
@@ -178,9 +134,7 @@ const FormMantenimientos = ({viviendas, insertarMantenimiento}) => {
         </div>
       </div>
     </div>
-  
-  
   </>);
 };
 
-export default FormMantenimientos;
+export default FormGastos;

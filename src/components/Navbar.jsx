@@ -111,15 +111,10 @@ const Navbar = () => {
                     Lista de reserva
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                    Cancelar Reserva
-                  </NavLink>
-                </li>
+               
               </ul>
             </li>
             
-
 
             <li className="nav-item dropdown">
               <NavLink
@@ -138,7 +133,7 @@ const Navbar = () => {
               >
                 <li>
                   <NavLink className="dropdown-item" to="/Mantenimientos">
-                    Informar Mantenimiento o Limpieza
+                    Informe Mantenimiento o Limpieza
                   </NavLink>
                 </li>
                 <li>
@@ -150,7 +145,34 @@ const Navbar = () => {
               </ul>
             </li>
 
-
+            <li className="nav-item dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Gastos
+              </NavLink>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/Gastos">
+                    Informe de Gastos o Facturas 
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/ListaGastos">
+                    Lista de Gastos o Facturas
+                  </NavLink>
+                </li>
+                
+              </ul>
+            </li>
 
 
 

@@ -76,6 +76,31 @@ const listaDataMantenimiento = () => {
     .then((res) => res.data);
 }
 
+const listaDataReservas = () => {
+  return axios
+    .get("http://localhost:8000/api/v1/listaDataReservas")
+    .then((res) => res.data);
+}
+
+const allGastos = () => {
+  return axios
+    .get("http://localhost:8000/api/v1/allGastos")
+    .then((res) => res.data);
+}
+
+const crearGastos = (datos,set,arra) => {
+  return axios
+    .post("http://localhost:8000/api/v1/insertGasto", datos)
+    .then((res) => {
+      return set(arra.push(res.data));
+    })
+}
+
+const listaDataGastos = () => {
+  return axios
+    .get("http://localhost:8000/api/v1/listaGastos")
+    .then((res) => res.data);
+}
 
 
-module.exports = { listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };
+module.exports = { listaDataGastos,crearGastos,allGastos,listaDataReservas,listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };

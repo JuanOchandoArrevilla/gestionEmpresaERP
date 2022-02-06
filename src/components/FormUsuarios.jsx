@@ -114,6 +114,15 @@ const FormUsuarios = ({ insertarUser }) => {
                           className="cuadroField"
                           type="checkbox"
                           name="roles"
+                          value="Usuarios"
+                        />
+                        gestion de usuarios
+                      </label>
+                      <label>
+                        <Field
+                          className="cuadroField"
+                          type="checkbox"
+                          name="roles"
                           value="Viviendas"
                         />
                         gestion de viviendas
@@ -142,9 +151,9 @@ const FormUsuarios = ({ insertarUser }) => {
                           className="cuadroField"
                           type="checkbox"
                           name="roles"
-                          value="Usuarios"
+                          value="Gastos"
                         />
-                        gestion de usuarios
+                        gestion de Gastos o Facturas
                       </label>
                       <label>
                         <Field
