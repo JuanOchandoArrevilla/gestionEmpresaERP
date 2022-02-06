@@ -70,8 +70,12 @@ const crearMantenimiento = (datos,set,arr) => {
     })
 }
 
+const listaDataMantenimiento = () => {
+  return axios
+    .get("http://localhost:8000/api/v1/listaDataMantenimiento")
+    .then((res) => res.data);
+}
 
 
 
-
-module.exports = { showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };
+module.exports = { listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };

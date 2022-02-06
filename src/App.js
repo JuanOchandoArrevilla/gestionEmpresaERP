@@ -146,7 +146,7 @@ function App() {
           <Route path="/Reservas" element={<PaginaReserva insertarReserva={insertarReserva}  />  } />
           <Route path="/ListaReservas" element={ <PaginaListReservas reservas={reservas} />} />
           <Route path="/Mantenimientos" element={ <PaginaMantenimiento viviendas={viviendas} insertarMantenimiento={insertarMantenimiento}/>} />
-          <Route path="/ListaMantenimientos" element={ <PaginaListMantenimiento mantenimiento={mantenimiento}/>} />
+          <Route path="/ListaMantenimientos" element={ <PaginaListMantenimiento />} />
 
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
           

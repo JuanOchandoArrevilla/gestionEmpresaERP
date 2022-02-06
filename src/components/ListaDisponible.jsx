@@ -6,11 +6,15 @@ const ListaDisponible = ({numeroPropiedad}) => {
   const [fechas, setFechas] = useState({
     Fecha_Entrada: "",
     Fecha_Salida: "",
+    Fecha_ini: "",
+    Fecha_fin: "",
+
   });
   const [viviendasDisponibles, setViviendasDisponibles] = useState([])
 
-   const consultaDisponibles = async(entrada, salida) => {
-    const viviendas = await listDisponible(entrada,salida);
+   const consultaDisponibles = async(entrada, salida, entrada1, salida1) => {
+
+    const viviendas = await listDisponible(entrada,salida, entrada1, salida1);
      setViviendasDisponibles(viviendas);
      
    }
@@ -27,8 +31,10 @@ const ListaDisponible = ({numeroPropiedad}) => {
   
 
   const handleSubmit = (e) => {
-    e.preventDefault();   
-    consultaDisponibles(fechas.Fecha_Entrada, fechas.Fecha_Salida);
+    e.preventDefault();
+    fechas.Fecha_ini = fechas.Fecha_Entrada;
+    fechas.Fecha_fin = fechas.Fecha_Salida;   
+    consultaDisponibles(fechas.Fecha_Entrada, fechas.Fecha_Salida, fechas.Fecha_ini,fechas.Fecha_fin);
     numeroPropiedad(viviendasDisponibles);
   };
 
@@ -56,7 +62,7 @@ const ListaDisponible = ({numeroPropiedad}) => {
         </button>
       </form>
 
-      <h1 className="listaDisponible" >Lista de Proviedades Disponibles</h1>
+      <h1 className="listaDisponible" >Lista de Propiedades Disponibles</h1>
       <div className="tamañoListDisponible ">
       
         <div className="scrollDisponible">

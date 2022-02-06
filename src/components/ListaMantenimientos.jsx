@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ListaMantenimientos = ({mantenimiento = []}) => {
+const ListaMantenimientos = ({dataMantenimiento = []}) => {
   return (
   <>
    <div className="listMantenimiento">
@@ -15,12 +15,15 @@ const ListaMantenimientos = ({mantenimiento = []}) => {
                 <th scope="col">Fecha Inicio</th>
                 <th scope="col">Fecha Terminada</th>
                 <th scope="col">Pago</th>
-                <th scope="col">numero de vivienda</th>
+                <th scope="col">Provincia</th>
+                <th scope="col">Municipio</th>
+                <th scope="col">Localidad</th>
+                <th scope="col">Direccion</th>
                 
               </tr>
             </thead>
             <tbody>
-              {mantenimiento.map((item) => {
+              {dataMantenimiento.map((item) => {
                 item.Fecha_Inicio = item.Fecha_Inicio.substring(0,10);
                 item.Fecha_Terminada = item.Fecha_Terminada.substring(0,10);
                 return (
@@ -30,8 +33,10 @@ const ListaMantenimientos = ({mantenimiento = []}) => {
                     <td>{item.Fecha_Inicio}</td>
                     <td>{item.Fecha_Terminada}</td>
                     <td>{`${item.Pago}€`}</td>  
-                    <td>{item.Num_propiedad_Vivienda}</td>
-                   
+                    <td>{item.Provincia}</td>
+                    <td>{item.Municipio}</td>
+                    <td>{item.Localidad}</td>
+                    <td>{item.Direccion}</td>
                   </tr>
                 );
               })}
