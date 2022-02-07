@@ -35,9 +35,10 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
                       <div className="form-outline form-white mb-4">
                         <label className="form-label">Usuario</label>
                         <input
+                        
                           type="user"
                           name="user"
-                          className="form-control form-control-lg"
+                          className="form-control form-control-lg loginLabel"
                           value={usuario.user}
                           onChange={handleChange}
                         />
@@ -48,7 +49,7 @@ const Login = ({ registroModal, userAmin, comprobarUsuario, errorMensaje }) => {
                         <input
                           type="password"
                           name="password"
-                          className="form-control form-control-lg"
+                          className="form-control form-control-lg loginLabel"
                           value={usuario.password}
                           onChange={handleChange}
                         />

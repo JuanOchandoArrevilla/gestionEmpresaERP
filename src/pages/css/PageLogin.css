@@ -3,3 +3,15 @@
     top: 80%;
     right: 33%;
 }
+
+.colorLogin {
+    background-color: #1E2226;   
+}
+
+.loginLabel {
+    position: relative;
+    left: 100px;
+    top: 5px;
+    width:50%;
+}
+

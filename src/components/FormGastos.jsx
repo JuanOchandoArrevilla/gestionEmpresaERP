@@ -6,7 +6,7 @@ const FormGastos = ({viviendas = [], insertarGastos}) => {
   return (
   <>
   <div className="formLimpieza">
-      <h1>Infome de Mantenimiento y limpieza</h1>
+      <h1>Infome de Gastos o Factura</h1>
       <div className="col-2">
         <div className="card mt-3 bg-dark">
           <div className="card-body ">

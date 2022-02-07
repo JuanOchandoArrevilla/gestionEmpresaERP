@@ -174,21 +174,31 @@ const Navbar = () => {
               </ul>
             </li>
 
-
-
-
-
-
-            <li className="nav-item">
-              <NavLink className="nav-link" to="#">
-                Estadistica
+            <li className="nav-item dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+               Estadistica
               </NavLink>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <NavLink className="dropdown-item" to="/Estadistica">
+                    Informe de Estadisticas
+                  </NavLink>
+                </li>
+                
+                
+              </ul>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="#">
-                Pricing
-              </NavLink>
-            </li>
+          
           </ul>
           
         </div>
