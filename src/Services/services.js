@@ -102,5 +102,39 @@ const listaDataGastos = () => {
     .then((res) => res.data);
 }
 
+const calcularAñoGastos = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/calcularAno/${fecha}`)
+    .then((res) => res.data);
+}
 
-module.exports = { listaDataGastos,crearGastos,allGastos,listaDataReservas,listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };
+const calcularAñoLimpieza = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/calcularAnoLimpieza/${fecha}`)
+    .then((res) => res.data);
+}
+
+const calcularIngresoAno = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/ingresoAno/${fecha}`)
+    .then((res) => res.data);
+}
+
+const calcularMensual = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/gastosMensual/${fecha}`)
+    .then((res) => res.data);
+}
+
+const calcularMesLimpieza = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/gastosMesLimpieza/${fecha}`)
+    .then((res) => res.data);
+}
+
+
+
+
+
+
+module.exports = { calcularMesLimpieza,calcularMensual,calcularIngresoAno,calcularAñoLimpieza,calcularAñoGastos,listaDataGastos,crearGastos,allGastos,listaDataReservas,listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };

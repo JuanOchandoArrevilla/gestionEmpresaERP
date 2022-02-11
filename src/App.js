@@ -148,7 +148,6 @@ function App() {
    }
    
    
-
   return (
     <>
       <BrowserRouter>
@@ -165,7 +164,7 @@ function App() {
           <Route path="/ListaMantenimientos" element={ <PaginaListMantenimiento />} />
           <Route path="/Gastos" element={ <PaginaGastos viviendas={viviendas} insertarGastos={insertarGastos}/>} />
           <Route path="/ListaGastos" element={ <PaginaListGastos />} />
-          <Route path="/Estadistica" element={ <PaginaEstadistica gastos={gastos} mantenimiento={mantenimiento}/>} />
+          <Route path="/Estadistica" element={ <PaginaEstadistica />} />
 
           <Route path="/listadoUsuarios" element={ <NavbarUsuario />} />
           <Route path="/listadoReservas" element={ <NavbarReservas />} />
