@@ -132,9 +132,13 @@ const calcularMesLimpieza = (fecha) => {
     .then((res) => res.data);
 }
 
+const calcularIngresoMensual = (fecha) => {
+  return axios
+    .get(`http://localhost:8000/api/v1/ingresoMensual/${fecha}`)
+    .then((res) => res.data);
+}
 
 
 
 
-
-module.exports = { calcularMesLimpieza,calcularMensual,calcularIngresoAno,calcularAñoLimpieza,calcularAñoGastos,listaDataGastos,crearGastos,allGastos,listaDataReservas,listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };
+module.exports = { calcularIngresoMensual,calcularMesLimpieza,calcularMensual,calcularIngresoAno,calcularAñoLimpieza,calcularAñoGastos,listaDataGastos,crearGastos,allGastos,listaDataReservas,listaDataMantenimiento ,showAllviviendas, crearViviendas, crearUsuario, allUsers, allReservas, listDisponible, deleteUser,crearMantenimiento,allMantemientos,crearReserva };

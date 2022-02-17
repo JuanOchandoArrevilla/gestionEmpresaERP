@@ -56,8 +56,7 @@ const ListaUsuarios = ({ usersDB = [] }) => {
                     <td>{item.password}</td>
                     <td>{item.roles}</td>
                     <td>
-                      <button className="btn-warning"  >Editar</button>
-                      {"  "}
+                      
                       <button
                         className="btn-danger"
                         onClick={() => confirmarDeleteUser(item.id,item.roles, item.usuario)}

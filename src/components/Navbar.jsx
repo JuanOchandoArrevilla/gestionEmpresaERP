@@ -42,16 +42,7 @@ const Navbar = () => {
                     Lista de Usuarios
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                   Modificar Usuario
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                   Eliminar Usuario
-                  </NavLink>
-                </li>
+               
               </ul>
             </li>
 

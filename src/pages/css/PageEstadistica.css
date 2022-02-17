@@ -4,8 +4,10 @@
     width: 25%;
 }
 
-.gastoAno {
+
+.mensual{
     position: relative;
-    left:70%;
-    width: 10%;
+    left: 5%;
+    width: 30%;
+    top:-150px;
 }
