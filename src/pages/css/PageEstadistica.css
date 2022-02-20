@@ -9,5 +9,12 @@
     position: relative;
     left: 5%;
     width: 30%;
-    top:-150px;
+    bottom: 1000px;
+}
+
+.anual {
+    position: relative;
+    left: 49%;
+    width: 50%;
+    
 }

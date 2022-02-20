@@ -25,17 +25,12 @@ const PaginaEstadistica = () => {
   const [sumaGastosMensual, setSumaGastosMensual] = useState("");
   const [sumaIngresoMensual, setSumaIngresoMensual] = useState("");
   const [totalMes, setTotalMes] = useState("");
-  const [showDataMensual, setShowDataMensual] = useState(false);
-  const handleShowMensual = () => setShowDataMensual(true);
-  const handleCloseMensual = () => setShowDataMensual(false);
   const [numMes, setNumMes] = useState("");
   const [mes, setMes] = useState("");
-  const [mensaje, setMensaje] = useState("");
-  const [manejaMes, setManejaMes] = useState(false);
   const [year, setYear] = useState("");
-  const [mensajeAno, setMensajeAno] = useState("");
   const [totalYear, setTotalYear] = useState("");
-
+  const [anualColor, setAnualColor] = useState(false);
+  const [mensualColor, setMensualColor] = useState(false);
 
   const gastosAño = async (fecha) => {
     const gasto = await calcularAñoGastos(fecha);
@@ -76,9 +71,7 @@ const PaginaEstadistica = () => {
     }));
   };
 
-  const calcularDatos = () => {
-    
-  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -109,15 +102,17 @@ const PaginaEstadistica = () => {
     setSumaIngresos(ingresos);
     setTotalYear(ingresos - gastos);
 
-    if (totalYear < 0) {
-      setMensajeAno("la empresa tuvo perdidas de");
-    } else if (totalYear > 0) {
-      setMensajeAno("la empresa tuvo ganancia de");
-    } else {
-      setMensajeAno("este año hemos trabajado");
-    }
+   
   })
 
+  const changeColorAno = () => {
+    if (totalYear < 0) {
+      setAnualColor(true);
+     } else {
+      setAnualColor(false);
+
+     }
+  }
 
   useEffect(() => {
     let gastos = 0;
@@ -138,13 +133,8 @@ const PaginaEstadistica = () => {
     setSumaIngresoMensual(ingresos);
     setTotalMes(ingresos - gastos);
 
-    if (totalMes < 0) {
-      setMensaje("la empresa tuvo perdidas de");
-    } else if (totalMes > 0) {
-      setMensaje("la empresa tuvo ganancia de");
-    } else {
-      setMensaje("ese mes no hemos trabajado");
-    }
+    
+   
     switch (numMes) {
       case "01":
         setMes("enero");
@@ -185,22 +175,26 @@ const PaginaEstadistica = () => {
       default:
         break;
     }
-
-    if (!manejaMes) {
-      handleShowMensual();   
-    }
    
   });
 
-  const calcularDatosMensual = () => {
-    handleShowMensual();
-    setManejaMes(true);
-  };
+    const changeColor = () => {
+      if (totalMes < 0 ) {
+        setMensualColor(true) 
+      }else {
+        setMensualColor(false) 
+      }
+
+      
+
+    };
 
   return (
     <>
+    <div className="anual" >
+    <h1>informe de Gastos e Ingresos en el año:</h1>
       <form className="formAño" onSubmit={handleSubmit}>
-        <h1>informe de Gastos e Ingresos en el año:</h1>
+        
         <br />
         <label>fecha entrada:</label>
         <input
@@ -210,17 +204,39 @@ const PaginaEstadistica = () => {
           onChange={handleChange}
         />
         <button
-          // onClick={() => calcularDatos()}
           type="submit"
           className="btn btn-success m-2"
+          onClick={() => changeColorAno()}
         >
           buscar año
         </button>
       </form>
-      <h1 className="formAño">{`en el año ${year}`}</h1>
-      <h1 className="formAño">{ `los gastos fueron: ${sumaGastos}`}</h1>
-      <h1 className="formAño"> {`los ingresos fueron: ${sumaIngresos} `}</h1>
-      <h1 className="formAño"> {`${mensajeAno}  ${totalYear} `}</h1>
+     
+
+      <div className="scroll">
+          <table className="table table-striped ">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">año</th>
+                <th scope="col">Ingresos</th>
+                <th scope="col">Gastos</th>
+                <th scope="col">Total</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+                  <tr>
+                  <th scope="row">{year}</th>
+                    <td>{`${sumaIngresos}€`}</td>
+                    <td>{`${sumaGastos}€ `}</td>
+                    <td  style={!anualColor ? { color: "green" } : { color: "red" }}>{`${totalYear}€`}</td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
 
 
       <div className="mensual">
@@ -255,27 +271,38 @@ const PaginaEstadistica = () => {
                 <option value="11"> Noviembre</option>
                 <option value="12"> Diciembre</option>
               </Field>
-              <button onClick={() => calcularDatosMensual()} type="submit">
+              <button onClick={() => changeColor() } type="submit">
                 buscar mes
               </button>
             </div>
           </Form>
         </Formik>
-       <div
-          id="myModal"
-          className=""
-          role="dialog"
-          style={showDataMensual ? { display: "block" } : { display: "none" }}
-        >
-          <h1>{`los gastos del mes de ${mes} son: ${sumaGastosMensual} `} </h1>
-          <h1> {`los ingresos del mes de ${mes} son : ${sumaIngresoMensual}`}</h1>
-          <h1>{`${mensaje} ${totalMes}€ en el mes de ${mes} `} </h1>
-          <button type="button" onClick={() => handleCloseMensual()}>
-            cerrar informacion
-          </button>
+       
+        <div className="scroll">
+          <table className="table table-striped ">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Mes</th>
+                <th scope="col">Ingresos</th>
+                <th scope="col">Gastos</th>
+                <th scope="col">Total</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                  <th scope="row">{mes}</th>
+                    <td >{`${sumaIngresoMensual}€`}</td>
+                    <td >{`${sumaGastosMensual}€ `}</td>
+                    <td style={mensualColor ? { color: "green" } : { color: "red" }} >{`${totalMes}€`}</td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+
         </div> 
         
-      </div>
+     
     </>
   );
 };
