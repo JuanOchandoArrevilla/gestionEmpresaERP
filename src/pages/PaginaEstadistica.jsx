@@ -30,7 +30,7 @@ const PaginaEstadistica = () => {
   const [year, setYear] = useState("");
   const [totalYear, setTotalYear] = useState("");
   const [anualColor, setAnualColor] = useState(false);
-  const [mensualColor, setMensualColor] = useState(false);
+  const [mensualColor, setMensualColor] = useState(null);
 
   const gastosAño = async (fecha) => {
     const gasto = await calcularAñoGastos(fecha);
@@ -71,14 +71,12 @@ const PaginaEstadistica = () => {
     }));
   };
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     gastosAño(fechas.Fecha);
     gastoLimpieza(fechas.Fecha);
     anoIngreso(fechas.Fecha);
-    let anio = fechas.Fecha.substring(0,4);
+    let anio = fechas.Fecha.substring(0, 4);
     setYear(anio);
   };
 
@@ -101,18 +99,15 @@ const PaginaEstadistica = () => {
     setSumaGastos(gastos);
     setSumaIngresos(ingresos);
     setTotalYear(ingresos - gastos);
-
-   
-  })
+  });
 
   const changeColorAno = () => {
-    if (totalYear < 0) {
-      setAnualColor(true);
-     } else {
+    if (totalYear > 0) {
       setAnualColor(false);
-
-     }
-  }
+    } else {
+      setAnualColor(true);
+    }
+  };
 
   useEffect(() => {
     let gastos = 0;
@@ -133,8 +128,6 @@ const PaginaEstadistica = () => {
     setSumaIngresoMensual(ingresos);
     setTotalMes(ingresos - gastos);
 
-    
-   
     switch (numMes) {
       case "01":
         setMes("enero");
@@ -175,45 +168,39 @@ const PaginaEstadistica = () => {
       default:
         break;
     }
-   
   });
 
-    const changeColor = () => {
-      if (totalMes < 0 ) {
-        setMensualColor(true) 
-      }else {
-        setMensualColor(false) 
-      }
-
-      
-
-    };
+  const changeColor = () => {
+    if (totalMes > 0) {
+      setMensualColor(false);
+    } else {
+      setMensualColor(true);
+    }
+  };
 
   return (
     <>
-    <div className="anual" >
-    <h1>informe de Gastos e Ingresos en el año:</h1>
-      <form className="formAño" onSubmit={handleSubmit}>
-        
-        <br />
-        <label>fecha entrada:</label>
-        <input
-          type="date"
-          name="Fecha"
-          value={fechas.Fecha}
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className="btn btn-success m-2"
-          onClick={() => changeColorAno()}
-        >
-          buscar año
-        </button>
-      </form>
-     
+      <div className="anual">
+        <h1>informe de Gastos e Ingresos en el año:</h1>
+        <form className="formAño" onSubmit={handleSubmit}>
+          <br />
+          <label>fecha entrada:</label>
+          <input
+            type="date"
+            name="Fecha"
+            value={fechas.Fecha}
+            onChange={handleChange}
+          />
+          <button
+            type="submit"
+            className="btn btn-success"
+            onClick={() => changeColorAno()}
+          >
+            buscar año
+          </button>
+        </form>
 
-      <div className="scroll">
+        <div className="scroll">
           <table className="table table-striped ">
             <thead className="table-dark">
               <tr>
@@ -221,23 +208,21 @@ const PaginaEstadistica = () => {
                 <th scope="col">Ingresos</th>
                 <th scope="col">Gastos</th>
                 <th scope="col">Total</th>
-                
               </tr>
             </thead>
             <tbody>
-              
-                  <tr>
-                  <th scope="row">{year}</th>
-                    <td>{`${sumaIngresos}€`}</td>
-                    <td>{`${sumaGastos}€ `}</td>
-                    <td  style={!anualColor ? { color: "green" } : { color: "red" }}>{`${totalYear}€`}</td>
-                  </tr>
+              <tr>
+                <th scope="row">{year}</th>
+                <td>{`${sumaIngresos}€`}</td>
+                <td>{`${sumaGastos}€ `}</td>
+                <td
+                  style={anualColor ? { color: "green" } : { color: "red" }}
+                >{`${totalYear}€`}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        </div>
-
-
+      </div>
 
       <div className="mensual">
         <h1>informe de Gastos e Ingresos mensual:</h1>
@@ -255,7 +240,7 @@ const PaginaEstadistica = () => {
         >
           <Form>
             <div className="mb-3">
-              <label className="">mes:</label>
+              <label>mes:</label>
               <Field type="number" name="mes" as="select">
                 <option value="0"> ""</option>
                 <option value="01"> Enero</option>
@@ -271,13 +256,13 @@ const PaginaEstadistica = () => {
                 <option value="11"> Noviembre</option>
                 <option value="12"> Diciembre</option>
               </Field>
-              <button onClick={() => changeColor() } type="submit">
+              <button className="btn btn-success" onClick={() => changeColor()} type="submit">
                 buscar mes
               </button>
             </div>
           </Form>
         </Formik>
-       
+
         <div className="scroll">
           <table className="table table-striped ">
             <thead className="table-dark">
@@ -286,23 +271,21 @@ const PaginaEstadistica = () => {
                 <th scope="col">Ingresos</th>
                 <th scope="col">Gastos</th>
                 <th scope="col">Total</th>
-                
               </tr>
             </thead>
             <tbody>
-                  <tr>
-                  <th scope="row">{mes}</th>
-                    <td >{`${sumaIngresoMensual}€`}</td>
-                    <td >{`${sumaGastosMensual}€ `}</td>
-                    <td style={mensualColor ? { color: "green" } : { color: "red" }} >{`${totalMes}€`}</td>
-                  </tr>
+              <tr>
+                <th scope="row">{mes}</th>
+                <td>{`${sumaIngresoMensual}€`}</td>
+                <td>{`${sumaGastosMensual}€ `}</td>
+                <td
+                  style={mensualColor ? { color: "green" } : { color: "red" }}
+                >{`${totalMes}€`}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-
-        </div> 
-        
-     
+      </div>
     </>
   );
 };

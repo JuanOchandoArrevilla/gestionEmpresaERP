@@ -16,6 +16,7 @@ import NavbarViviendas from "./components/NavbarUsuarios/NavbarViviendas";
 import NavbarMantemiento from "./components/NavbarUsuarios/NavbarMantemiento";
 import NavbarUsuario from "./components/NavbarUsuarios/NavbarUsuario";
 import NavbarGastos from "./components/NavbarUsuarios/NavbarGastos";
+import NavbarEstadistica from "./components/NavbarUsuarios/NavbarEstadistica";
 import PaginaListReservas from "./pages/PaginaListReservas";
 import PaginaMantenimiento from "./pages/PaginaMantenimiento";
 import PaginaListMantenimiento from "./pages/PaginaListMantenimiento";
@@ -171,6 +172,7 @@ function App() {
           <Route path="/listadoViviendas" element={ <NavbarViviendas />} />
           <Route path="/listadoMantenimientos" element={ <NavbarMantemiento />} /> 
           <Route path="/listadoGastos" element={ <NavbarGastos />} />
+          <Route path="/listadoEstadisticas" element={ <NavbarEstadistica />} />
         </Routes> : null
       }
       </BrowserRouter>
