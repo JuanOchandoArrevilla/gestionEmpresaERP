@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gestionEmpresaERP/static/css/main.df807d69.css",
+    "main.js": "/gestionEmpresaERP/static/js/main.0d04e2a8.js",
+    "index.html": "/gestionEmpresaERP/index.html",
+    "main.df807d69.css.map": "/gestionEmpresaERP/static/css/main.df807d69.css.map",
+    "main.0d04e2a8.js.map": "/gestionEmpresaERP/static/js/main.0d04e2a8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df807d69.css",
+    "static/js/main.0d04e2a8.js"
+  ]
+}
